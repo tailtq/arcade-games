@@ -14,7 +14,6 @@ BASE_DIR = Path(__file__).parent
 # Mount static file directories
 app.mount("/data", StaticFiles(directory=BASE_DIR / "data"), name="data")
 app.mount("/roms", StaticFiles(directory=BASE_DIR / "roms"), name="roms")
-# app.mount("/", StaticFiles(directory=BASE_DIR), name="roms")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root():
