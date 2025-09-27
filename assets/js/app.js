@@ -7,7 +7,7 @@ import PlayPage from './pages/play.vue.js';
 // import { useGameStore } from './stores/gameStore.js';
 
 const router = VueRouter.createRouter({
-    history: VueRouter.createWebHistory(),
+    history: VueRouter.createWebHashHistory(),
     routes: [
         { path: '/', component: HomePage },
         { path: '/play/:gameId', component: PlayPage },

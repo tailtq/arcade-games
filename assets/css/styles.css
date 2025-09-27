@@ -93,12 +93,12 @@ body {
 /* Page Styles */
 .page {
     min-height: calc(100vh - 140px);
-    padding: 2rem 0;
+    padding: 1.5rem 0;
 }
 
 .page-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     color: white;
 }
 
@@ -283,14 +283,14 @@ body {
 }
 
 /* Play Page Styles */
-.game-header {
+.game-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1rem;
     margin-bottom: 2rem;
     color: white;
 }
@@ -577,7 +577,7 @@ kbd {
         gap: 1rem;
     }
     
-    .game-header {
+    .game-footer {
         flex-direction: column;
         gap: 1rem;
         text-align: center;
@@ -608,7 +608,7 @@ kbd {
         grid-template-columns: 1fr;
     }
     
-    .game-header {
+    .game-footer {
         padding: 1rem;
     }
     

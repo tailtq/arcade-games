@@ -2,8 +2,19 @@ const template = `
 <!-- Game Play Page -->
 <div v-if="gameStore.currentPage === 'play'" class="page play-page">
     <div class="container">
-        <div class="game-header" v-if="gameStore.currentGame">
-            <button @click="showGameList" class="back-btn">← Back to Games</button>
+        <!-- Emulator Container -->
+        <div class="emulator-container">
+            <div id="game" class="game-screen">
+                <div v-if="!gameStore.gameLoaded" class="loading-screen">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">Loading {{ gameStore.currentGame?.name }}...</div>
+                    <div class="loading-progress">Initializing emulator...</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="game-footer" v-if="gameStore.currentGame">
+            <button @click="backToHome" class="back-btn">← Back to Games</button>
             <div class="game-title-section">
                 <h2>{{ gameStore.currentGame.name }}</h2>
                 <div class="game-meta">
@@ -16,22 +27,12 @@ const template = `
                 <button @click="toggleFullscreen" class="control-btn">⌞ ⌝ Fullscreen</button>
             </div>
         </div>
-
-        <!-- Emulator Container -->
-        <div class="emulator-container">
-            <div id="game" class="game-screen">
-                <div v-if="!gameStore.gameLoaded" class="loading-screen">
-                    <div class="loading-spinner"></div>
-                    <div class="loading-text">Loading {{ gameStore.currentGame?.name }}...</div>
-                    <div class="loading-progress">Initializing emulator...</div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 `;
 
 import { useGameStore } from '../stores/gameStore.js';
+import navigation from '../utils/navigation.js';
 
 export default {
     name: 'Detail',
@@ -68,6 +69,7 @@ export default {
         }
     },
     methods: {
+        ...navigation.methods,
         initializeEmulator(game) {
             console.log('Initializing emulator for:', game.name);
             
@@ -76,12 +78,12 @@ export default {
             
             // Set EmulatorJS configuration
             window.EJS_player = '#game';
-            window.EJS_gameUrl = `/roms/${game.romFile}`;
+            window.EJS_gameUrl = `roms/${game.romFile}`;
             window.EJS_core = game.core;
             window.EJS_gameName = game.name;
             window.EJS_color = game.color || '#0064ff';
             window.EJS_startOnLoaded = true;
-            window.EJS_pathtodata = '/data/';
+            window.EJS_pathtodata = 'data/';
             window.EJS_language = 'en-US';
             window.EJS_DEBUG_XX = true;
             
@@ -119,7 +121,7 @@ export default {
             
             // Load the EmulatorJS loader
             const script = document.createElement('script');
-            script.src = '/data/loader.js';
+            script.src = 'data/loader.js';
             script.onload = () => {
                 console.log('EmulatorJS loader loaded');
             };
@@ -184,15 +186,6 @@ export default {
                     }
                 }, 300);
             }, 3000);
-        },
-        showGameList() {
-            this.gameStore.setCurrentPage('home');
-            this.gameStore.setGameLoaded(false);
-            this.gameStore.setShowControlsModal(false);
-            // Clean up any running emulator
-            this.$router.push('/').then(() => {
-                window.location.reload(); // Reloads the entire page after navigation
-            });
         },
         toggleControls() {
             this.gameStore.setShowControlsModal(!this.gameStore.showControlsModal);
