@@ -42,7 +42,7 @@ export const useGameStore = Pinia.defineStore('game', {
                 system: 'neogeo',
                 year: 2000,
                 core: 'fbneo',
-                romFile: 'double-dragon.zip',
+                romFile: 'doubledr.zip',
                 genre: ['Action'],
                 screenshot: 'assets/images/double-dragon.jpg',
                 color: '#74390A'
