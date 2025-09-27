@@ -12,7 +12,9 @@
 
     const folderPath = (path) => path.substring(0, path.length - path.split("/").pop().length);
     let scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
+    console.log('scriptPath', scriptPath, 123123123, 12345);
     if (!scriptPath.endsWith("/")) scriptPath += "/";
+    if (!scriptPath.startsWith("/")) scriptPath = "/" + scriptPath;
     //console.log(scriptPath);
     function loadScript(file) {
         return new Promise(function(resolve) {

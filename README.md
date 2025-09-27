@@ -7,7 +7,7 @@
 
 A modern web-based retro gaming platform that brings classic arcade and console games to your browser. Built with Vue.js and powered by EmulatorJS, this platform supports dozens of gaming systems from the golden age of gaming.
 
-![Preview image](assets/img/intro.jpg)
+![Preview image](assets/images/intro.jpg)
 
 ## 🎮 Live Demo
 
