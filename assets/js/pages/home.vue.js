@@ -7,19 +7,19 @@ const template = `
             <p>Choose from our collection of classic retro games</p>
         </div>
 
-        <!-- System Sections -->
-        <div v-for="system in gameStore.availableSystems" :key="system" class="system-section">
+        <!-- Platform Sections -->
+        <div v-for="platform in gameStore.availablePlatforms" :key="platform" class="platform-section">
             <div class="section-header">
-                <h3 class="section-title">{{ system.toUpperCase() }}</h3>
-                <a @click.prevent="viewSystem(system)" class="view-more-link" href="#">
-                    View All {{ getSystemGameCount(system) }} Games →
+                <h3 class="section-title">{{ platform.toUpperCase() }}</h3>
+                <a @click.prevent="viewPlatform(platform)" class="view-more-link" href="#">
+                    View All {{ getPlatformGameCount(platform) }} Games →
                 </a>
             </div>
 
             <!-- Games Grid -->
             <div class="games-grid">
                 <div 
-                    v-for="game in getSystemGames(system, 4)" 
+                    v-for="game in getPlatformGames(platform, 4)" 
                     :key="game.id"
                     @click="playGame(game)"
                     class="game-card"
@@ -68,15 +68,15 @@ export default {
             // Navigate to play page
             this.$router.push(`/play/${game.id}`);
         },
-        viewSystem(system) {
-            this.$router.push(`/system/${system}`);
+        viewPlatform(platform) {
+            this.$router.push(`/platform/${platform}`);
         },
-        getSystemGames(system, limit = null) {
-            const games = this.gameStore.getGamesBySystem(system);
+        getPlatformGames(platform, limit = null) {
+            const games = this.gameStore.getGamesByPlatform(platform);
             return limit ? games.slice(0, limit) : games;
         },
-        getSystemGameCount(system) {
-            return this.gameStore.getGamesBySystem(system).length;
+        getPlatformGameCount(platform) {
+            return this.gameStore.getGamesByPlatform(platform).length;
         }
     },
     async mounted() {

@@ -114,7 +114,7 @@ body {
 }
 
 /* Games Page Styles */
-.system-section {
+.platform-section {
     margin-bottom: 3rem;
 }
 
@@ -239,7 +239,7 @@ body {
     line-height: 0.7;
 }
 
-.system-inline {
+.platform-inline {
     font-size: 0.75rem;
     font-weight: 600;
     color: #667eea;
@@ -252,8 +252,8 @@ body {
     margin-bottom: 1rem;
 }
 
-.game-system,
-.system-badge {
+.game-platform,
+.platform-badge {
     background: #667eea;
     color: white;
     padding: 0.25rem 0.75rem;
