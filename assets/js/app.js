@@ -3,7 +3,7 @@ import Header from './components/header.vue.js';
 import Footer from './components/footer.vue.js';
 import HomePage from './pages/home.vue.js';
 import PlayPage from './pages/play.vue.js';
-import SystemPage from './pages/system.vue.js';
+import PlatformPage from './pages/platform.vue.js';
 // import { createPinia } from 'pinia';
 // import { useGameStore } from './stores/gameStore.js';
 
@@ -12,7 +12,7 @@ const router = VueRouter.createRouter({
     routes: [
         { path: '/', component: HomePage },
         { path: '/play/:gameId', component: PlayPage },
-        { path: '/system/:system', component: SystemPage },
+        { path: '/platform/:platform', component: PlatformPage },
     ]
 });
 

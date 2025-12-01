@@ -1,7 +1,7 @@
 export const useGameStore = Pinia.defineStore('game', {
     state: () => ({
         currentGame: null,
-        selectedSystem: 'all',
+        selectedPlatform: 'all',
         games: [],
         gameLoaded: false,
         showControlsModal: false,
@@ -9,31 +9,31 @@ export const useGameStore = Pinia.defineStore('game', {
         isLoadingGames: false
     }),
     getters: {
-        availableSystems: (state) => {
-            const systems = [...new Set(state.games.map(game => game.system))];
-            return systems.sort();
+        availablePlatforms: (state) => {
+            const platforms = [...new Set(state.games.map(game => game.platform))];
+            return platforms.sort();
         },
         filteredGames: (state) => {
-            if (state.selectedSystem === 'all') {
+            if (state.selectedPlatform === 'all') {
                 return state.games;
             }
-            return state.games.filter(game => game.system === state.selectedSystem);
+            return state.games.filter(game => game.platform === state.selectedPlatform);
         },
         getGameById: (state) => {
             return (id) => state.games.find(game => game.id === id);
         },
-        gamesBySystem: (state) => {
+        gamesByPlatform: (state) => {
             const grouped = {};
             state.games.forEach(game => {
-                if (!grouped[game.system]) {
-                    grouped[game.system] = [];
+                if (!grouped[game.platform]) {
+                    grouped[game.platform] = [];
                 }
-                grouped[game.system].push(game);
+                grouped[game.platform].push(game);
             });
             return grouped;
         },
-        getGamesBySystem: (state) => {
-            return (system) => state.games.filter(game => game.system === system);
+        getGamesByPlatform: (state) => {
+            return (platform) => state.games.filter(game => game.platform === platform);
         }
     },
     actions: {
@@ -54,8 +54,8 @@ export const useGameStore = Pinia.defineStore('game', {
         setCurrentGame(game) {
             this.currentGame = game;
         },
-        setSelectedSystem(system) {
-            this.selectedSystem = system;
+        setSelectedPlatform(platform) {
+            this.selectedPlatform = platform;
         },
         setGameLoaded(loaded) {
             this.gameLoaded = loaded;

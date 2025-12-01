@@ -2,7 +2,7 @@
     {
         "id": "mslug2",
         "name": "Metal Slug 2",
-        "system": "neogeo",
+        "platform": "neogeo",
         "year": 1998,
         "core": "fbneo",
         "romFile": "mslug2.zip",
@@ -13,7 +13,7 @@
     {
         "id": "mslug3",
         "name": "Metal Slug 3",
-        "system": "neogeo",
+        "platform": "neogeo",
         "year": 1999,
         "core": "fbneo",
         "romFile": "mslug3.zip",
@@ -24,7 +24,7 @@
     {
         "id": "mslug5",
         "name": "Metal Slug 5",
-        "system": "neogeo",
+        "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
         "romFile": "mslug5.zip",
@@ -35,7 +35,7 @@
     {
         "id": "double-dragon",
         "name": "Double Dragon",
-        "system": "neogeo",
+        "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
         "romFile": "doubledr.zip",

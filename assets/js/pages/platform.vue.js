@@ -1,16 +1,16 @@
 const template = `
-<!-- System Games Page -->
-<div class="page system-page">
+<!-- Platform Games Page -->
+<div class="page platform-page">
     <div class="container">
         <div class="page-header">
-            <h2>🎮 {{ systemName }} Games</h2>
-            <p>{{ systemGames.length }} games available</p>
+            <h2>🎮 {{ platformName }} Games</h2>
+            <p>{{ platformGames.length }} games available</p>
         </div>
 
         <!-- Games Grid -->
         <div class="games-grid">
             <div 
-                v-for="game in systemGames" 
+                v-for="game in platformGames" 
                 :key="game.id"
                 @click="playGame(game)"
                 class="game-card"
@@ -20,16 +20,16 @@ const template = `
                     <div v-else class="game-placeholder">🎮</div>
                 </div>
                 <div class="game-info">
-                    <h3 class="game-title">{{ game.name }} <span class="system-inline">({{ game.system.toUpperCase() }})</span></h3>
+                    <h3 class="game-title">{{ game.name }}</h3>
                 </div>
             </div>
         </div>
 
         <!-- Empty State -->
-        <div v-if="systemGames.length === 0" class="empty-state">
+        <div v-if="platformGames.length === 0" class="empty-state">
             <div class="empty-icon">🎯</div>
             <h3>No games found</h3>
-            <p>No games available for this system yet.</p>
+            <p>No games available for this platform yet.</p>
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@ const template = `
 import { useGameStore } from '../stores/gameStore.js';
 
 export default {
-    name: 'System',
+    name: 'Platform',
     template: template,
     setup() {
         const gameStore = useGameStore();
@@ -48,13 +48,13 @@ export default {
         };
     },
     computed: {
-        systemName() {
-            const system = this.$route.params.system;
-            return system ? system.toUpperCase() : '';
+        platformName() {
+            const platform = this.$route.params.platform;
+            return platform ? platform.toUpperCase() : '';
         },
-        systemGames() {
-            const system = this.$route.params.system;
-            return this.gameStore.getGamesBySystem(system);
+        platformGames() {
+            const platform = this.$route.params.platform;
+            return this.gameStore.getGamesByPlatform(platform);
         }
     },
     methods: {
