@@ -2,55 +2,11 @@ export const useGameStore = Pinia.defineStore('game', {
     state: () => ({
         currentGame: null,
         selectedSystem: 'all',
-        games: [
-            {
-                id: 'mslug2',
-                name: 'Metal Slug 2',
-                system: 'neogeo',
-                year: 1998,
-                core: 'fbneo',
-                romFile: 'mslug2.zip',
-                screenshot: 'assets/images/mslug2.jpg',
-                genre: ['Action'],
-                color: '#74390A'
-            },
-            {
-                id: 'mslug3',
-                name: 'Metal Slug 3',
-                system: 'neogeo',
-                year: 1999,
-                core: 'fbneo',
-                romFile: 'mslug3.zip',
-                genre: ['Action'],
-                screenshot: 'assets/images/mslug3.jpg',
-                color: '#74390A'
-            },
-            {
-                id: 'mslug5',
-                name: 'Metal Slug 5',
-                system: 'neogeo',
-                year: 2000,
-                core: 'fbneo',
-                romFile: 'mslug5.zip',
-                genre: ['Action'],
-                screenshot: 'assets/images/mslug5.jpg',
-                color: '#74390A'
-            },
-            {
-                id: 'double-dragon',
-                name: 'Double Dragon',
-                system: 'neogeo',
-                year: 2000,
-                core: 'fbneo',
-                romFile: 'doubledr.zip',
-                genre: ['Action'],
-                screenshot: 'assets/images/double-dragon.jpg',
-                color: '#74390A'
-            },
-        ],
+        games: [],
         gameLoaded: false,
         showControlsModal: false,
-        currentPage: 'home'
+        currentPage: 'home',
+        isLoadingGames: false
     }),
     getters: {
         availableSystems: (state) => {
@@ -65,9 +21,36 @@ export const useGameStore = Pinia.defineStore('game', {
         },
         getGameById: (state) => {
             return (id) => state.games.find(game => game.id === id);
+        },
+        gamesBySystem: (state) => {
+            const grouped = {};
+            state.games.forEach(game => {
+                if (!grouped[game.system]) {
+                    grouped[game.system] = [];
+                }
+                grouped[game.system].push(game);
+            });
+            return grouped;
+        },
+        getGamesBySystem: (state) => {
+            return (system) => state.games.filter(game => game.system === system);
         }
     },
     actions: {
+        async loadGames() {
+            if (this.games.length > 0) return; // Already loaded
+            
+            this.isLoadingGames = true;
+            try {
+                const response = await fetch('data/games.json');
+                const games = await response.json();
+                this.games = games;
+            } catch (error) {
+                console.error('Error loading games:', error);
+            } finally {
+                this.isLoadingGames = false;
+            }
+        },
         setCurrentGame(game) {
             this.currentGame = game;
         },

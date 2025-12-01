@@ -114,6 +114,43 @@ body {
 }
 
 /* Games Page Styles */
+.system-section {
+    margin-bottom: 3rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.view-more-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.view-more-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+
 .filters {
     display: flex;
     justify-content: center;
@@ -142,8 +179,8 @@ body {
 
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -162,7 +199,7 @@ body {
 }
 
 .game-image {
-    height: 200px;
+    height: 150px;
     overflow: hidden;
     position: relative;
 }
@@ -190,14 +227,23 @@ body {
 }
 
 .game-info {
-    padding: 1.5rem;
+    padding: 0.75rem;
+    text-align: center;
 }
 
 .game-title {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
     color: #333;
+    line-height: 0.7;
+}
+
+.system-inline {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #667eea;
+    opacity: 0.8;
 }
 
 .game-meta {
@@ -280,6 +326,18 @@ body {
 .empty-state h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+}
+
+/* Loading State */
+.loading-state {
+    text-align: center;
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.loading-state p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
 }
 
 /* Play Page Styles */
@@ -573,8 +631,8 @@ kbd {
     }
     
     .games-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.75rem;
     }
     
     .game-footer {
