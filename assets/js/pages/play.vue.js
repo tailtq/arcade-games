@@ -18,8 +18,7 @@ const template = `
             <div class="game-title-section">
                 <h2>{{ gameStore.currentGame.name }}</h2>
                 <div class="game-meta">
-                    <span class="system-badge">{{ gameStore.currentGame.system.toUpperCase() }}</span>
-                    <span v-if="gameStore.currentGame.year" class="year-badge">{{ gameStore.currentGame.year }}</span>
+                    <span class="platform-badge">{{ gameStore.currentGame.platform.toUpperCase() }}</span>
                 </div>
             </div>
             <div class="game-controls">

@@ -247,9 +247,10 @@ body {
 }
 
 .game-meta {
-    display: flex;
-    gap: 0.5rem;
+    /* display: flex; */
+    /* gap: 0.5rem; */
     margin-bottom: 1rem;
+    text-align: center;
 }
 
 .game-platform,
