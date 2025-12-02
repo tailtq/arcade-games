@@ -64,5 +64,5 @@ export default {
     },
     async mounted() {
         await this.gameStore.loadGames();
-    }
+    },
 };

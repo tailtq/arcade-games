@@ -9,11 +9,8 @@
         "socket.io.min.js",
         "compression.js"
     ];
+    let scriptPath = "/data/";
 
-    const folderPath = (path) => path.substring(0, path.length - path.split("/").pop().length);
-    let scriptPath = (typeof window.EJS_pathtodata === "string") ? window.EJS_pathtodata : folderPath((new URL(document.currentScript.src)).pathname);
-    if (!scriptPath.endsWith("/")) scriptPath += "/";
-    //console.log(scriptPath);
     function loadScript(file) {
         return new Promise(function(resolve) {
             let script = document.createElement("script");

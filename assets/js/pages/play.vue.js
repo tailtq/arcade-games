@@ -43,13 +43,15 @@ export default {
             gameStore,
         };
     },
-    mounted() {
+    async mounted() {
+        await this.gameStore.loadGames();
+
         // Check if we have a game ID in the route params
         const gameId = this.$route.params.gameId;
 
         if (gameId && !this.gameStore.currentGame) {
             const game = this.gameStore.getGameById(gameId);
-            console.log('game', game);
+
             if (game) {
                 console.log('game', game);
                 this.gameStore.setCurrentGame(game);
@@ -77,7 +79,7 @@ export default {
             
             // Set EmulatorJS configuration
             window.EJS_player = '#game';
-            window.EJS_gameUrl = `roms/${game.romFile}`;
+            window.EJS_gameUrl = `/roms/${game.romFile}`;
             window.EJS_core = game.core;
             window.EJS_gameName = game.name;
             window.EJS_color = game.color || '#0064ff';
@@ -120,7 +122,7 @@ export default {
             
             // Load the EmulatorJS loader
             const script = document.createElement('script');
-            script.src = 'data/loader.js';
+            script.src = '/data/loader.js';
             script.onload = () => {
                 console.log('EmulatorJS loader loaded');
             };
