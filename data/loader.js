@@ -9,7 +9,7 @@
         "socket.io.min.js",
         "compression.js"
     ];
-    let scriptPath = "/data/";
+    let scriptPath = `${window.baseURL}/data/`;
 
     function loadScript(file) {
         return new Promise(function(resolve) {
