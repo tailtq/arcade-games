@@ -53,7 +53,6 @@ export default {
             const game = this.gameStore.getGameById(gameId);
 
             if (game) {
-                console.log('game', game);
                 this.gameStore.setCurrentGame(game);
                 this.gameStore.setCurrentPage('play');
 
@@ -79,7 +78,7 @@ export default {
             
             // Set EmulatorJS configuration
             window.EJS_player = '#game';
-            window.EJS_gameUrl = `/roms/${game.romFile}`;
+            window.EJS_gameUrl = game.romFile;
             window.EJS_core = game.core;
             window.EJS_gameName = game.name;
             window.EJS_color = game.color || '#0064ff';

@@ -5,9 +5,9 @@
         "platform": "neogeo",
         "year": 1998,
         "core": "fbneo",
-        "romFile": "mslug2.zip",
-        "screenshot": "/assets/images/mslug2.jpg",
+        "romFile": "/arcade-games/roms/mslug2.zip",
         "genre": ["Action"],
+        "screenshot": "/arcade-games/assets/images/mslug2.jpg",
         "color": "#74390A"
     },
     {
@@ -16,9 +16,9 @@
         "platform": "neogeo",
         "year": 1999,
         "core": "fbneo",
-        "romFile": "mslug3.zip",
+        "romFile": "/arcade-games/roms/mslug3.zip",
         "genre": ["Action"],
-        "screenshot": "/assets/images/mslug3.jpg",
+        "screenshot": "/arcade-games/assets/images/mslug3.jpg",
         "color": "#74390A"
     },
     {
@@ -27,9 +27,9 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "mslug5.zip",
+        "romFile": "/arcade-games/roms/mslug5.zip",
         "genre": ["Action"],
-        "screenshot": "/assets/images/mslug5.jpg",
+        "screenshot": "/arcade-games/assets/images/mslug5.jpg",
         "color": "#74390A"
     },
     {
@@ -38,9 +38,9 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "doubledr.zip",
+        "romFile": "/arcade-games/roms/doubledr.zip",
         "genre": ["Action"],
-        "screenshot": "/assets/images/double-dragon.jpg",
+        "screenshot": "/arcade-games/assets/images/double-dragon.jpg",
         "color": "#74390A"
     }
 ]

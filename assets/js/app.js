@@ -8,7 +8,7 @@ import PlatformPage from './pages/platform.vue.js';
 // import { useGameStore } from './stores/gameStore.js';
 
 const router = VueRouter.createRouter({
-    history: VueRouter.createWebHistory('/arcade-games/'),
+    history: VueRouter.createWebHistory(window.baseURL),
     routes: [
         { path: '/', component: HomePage },
         { path: '/play/:gameId', component: PlayPage },
