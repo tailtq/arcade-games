@@ -17,20 +17,31 @@ app.mount("/roms", StaticFiles(directory=BASE_DIR / "roms"), name="roms")
 app.mount("/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
 # app.mount("/", StaticFiles(directory=BASE_DIR), name="roms")
 
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint"""
+    return {"status": "healthy", "message": "FE Games server is running"}
+
+
 @app.get("/{path:path}", response_class=HTMLResponse)
 async def read_root(path: str):
-    """Serve the main index.html file"""
+    """Serve the main index.html file for client-side routing"""
+    # If the path has a file extension, try to serve it as a static file
+    if "." in path.split("/")[-1]:
+        file_path = BASE_DIR / path
+        if file_path.exists() and file_path.is_file():
+            return FileResponse(file_path)
+        # If file doesn't exist, return 404
+        return HTMLResponse(content="<h1>404 - File not found</h1>", status_code=404)
+    
+    # For routes without extensions, serve index.html for client-side routing
     html_file = BASE_DIR / "index.html"
     if html_file.exists():
         with open(html_file, "r", encoding="utf-8") as f:
             return HTMLResponse(content=f.read())
     else:
         return HTMLResponse(content="<h1>Error: index.html not found</h1>", status_code=404)
-
-@app.get("/health")
-async def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy", "message": "FE Games server is running"}
 
 if __name__ == "__main__":
     print("Starting FE Games Emulator Server...")

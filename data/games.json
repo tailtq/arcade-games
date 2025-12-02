@@ -6,7 +6,7 @@
         "year": 1998,
         "core": "fbneo",
         "romFile": "mslug2.zip",
-        "screenshot": "assets/images/mslug2.jpg",
+        "screenshot": "/assets/images/mslug2.jpg",
         "genre": ["Action"],
         "color": "#74390A"
     },
@@ -18,7 +18,7 @@
         "core": "fbneo",
         "romFile": "mslug3.zip",
         "genre": ["Action"],
-        "screenshot": "assets/images/mslug3.jpg",
+        "screenshot": "/assets/images/mslug3.jpg",
         "color": "#74390A"
     },
     {
@@ -29,7 +29,7 @@
         "core": "fbneo",
         "romFile": "mslug5.zip",
         "genre": ["Action"],
-        "screenshot": "assets/images/mslug5.jpg",
+        "screenshot": "/assets/images/mslug5.jpg",
         "color": "#74390A"
     },
     {
@@ -40,7 +40,7 @@
         "core": "fbneo",
         "romFile": "doubledr.zip",
         "genre": ["Action"],
-        "screenshot": "assets/images/double-dragon.jpg",
+        "screenshot": "/assets/images/double-dragon.jpg",
         "color": "#74390A"
     }
 ]
