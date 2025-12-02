@@ -121,7 +121,7 @@ export default {
             
             // Load the EmulatorJS loader
             const script = document.createElement('script');
-            script.src = '/data/loader.js';
+            script.src = `${window.baseURL}/data/loader.js`;
             script.onload = () => {
                 console.log('EmulatorJS loader loaded');
             };
