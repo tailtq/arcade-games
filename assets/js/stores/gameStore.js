@@ -42,7 +42,7 @@ export const useGameStore = Pinia.defineStore('game', {
             
             this.isLoadingGames = true;
             try {
-                const response = await fetch('/data/games.json');
+                const response = await fetch(`${window.baseURL}/data/games.json`);
                 const games = await response.json();
                 this.games = games;
             } catch (error) {
