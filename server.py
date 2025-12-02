@@ -12,9 +12,9 @@ app = FastAPI(title="FE Games Emulator Server")
 BASE_DIR = Path(__file__).parent
 
 # Mount static file directories
-app.mount("/data", StaticFiles(directory=BASE_DIR / "data"), name="data")
-app.mount("/roms", StaticFiles(directory=BASE_DIR / "roms"), name="roms")
-app.mount("/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
+app.mount("/arcade-games/data", StaticFiles(directory=BASE_DIR / "data"), name="data")
+app.mount("/arcade-games/roms", StaticFiles(directory=BASE_DIR / "roms"), name="roms")
+app.mount("/arcade-games/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
 # app.mount("/", StaticFiles(directory=BASE_DIR), name="roms")
 
 
