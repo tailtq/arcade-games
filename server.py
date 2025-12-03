@@ -13,7 +13,6 @@ BASE_DIR = Path(__file__).parent
 
 # Mount static file directories
 app.mount("/arcade-games/data", StaticFiles(directory=BASE_DIR / "data"), name="data")
-app.mount("/arcade-games/roms", StaticFiles(directory=BASE_DIR / "roms"), name="roms")
 app.mount("/arcade-games/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
 # app.mount("/", StaticFiles(directory=BASE_DIR), name="roms")
 
@@ -66,5 +65,5 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8001,
         reload=True,
-        log_level="info"
+        log_level="info",
     )

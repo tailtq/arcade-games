@@ -31,7 +31,8 @@ const template = `
 `;
 
 import { useGameStore } from '../stores/gameStore.js';
-import navigation from '../utils/navigation.js';
+import navigationUtils from '../utils/navigation.js';
+import fileUtils from '../utils/file.js';
 
 export default {
     name: 'Detail',
@@ -69,7 +70,8 @@ export default {
         }
     },
     methods: {
-        ...navigation.methods,
+        ...navigationUtils.methods,
+        ...fileUtils.methods,
         initializeEmulator(game) {
             console.log('Initializing emulator for:', game.name);
             
@@ -88,20 +90,35 @@ export default {
             window.EJS_DEBUG_XX = true;
             
             // Set up callbacks
-            window.EJS_onGameStart = () => {
+            window.EJS_onGameStart = (e) => {
+                console.log('Game started', e);
                 this.gameStore.setGameLoaded(true);
                 this.showNotification(`${game.name} loaded successfully!`, 'success');
             };
             
-            window.EJS_onLoadState = () => {
-                console.log('State loaded');
-                this.showNotification('Game state loaded', 'info');
+            window.EJS_onLoadState = (e) => {
+                // Trigger file upload dialog
+                this.uploadFile('.state,.dst', (data) => {
+                    try {
+                        console.log('State loaded', e, data);
+                        window.EJS_emulator.gameManager.loadState(new Uint8Array(data));
+                        this.showNotification('State loaded from file', 'success');
+                    } catch (error) {
+                        console.error('Error loading state:', error);
+                        this.showNotification('Failed to load state file', 'error');
+                    }
+                });
             };
             
-            window.EJS_onSaveState = () => {
-                console.log('State saved');
-                this.showNotification('Game state saved', 'success');
+            window.EJS_onSaveState = (e) => {
+                console.log('State saved', e);
+                const state = window.EJS_emulator.gameManager.getState();
+                this.downloadFile(`${game.name}_${new Date().getTime()}.state`, state, 'application/octet-stream');
             };
+
+            window.EJS_onSaveUpdate = function(e) {
+                console.log('The contents of the save file have changed!', e);
+            }
             
             window.EJS_onError = (error) => {
                 console.error('Emulator error:', error);
@@ -120,7 +137,7 @@ export default {
             
             // Load the EmulatorJS loader
             const script = document.createElement('script');
-            script.src = `${window.baseURL}/data/loader.js`;
+            script.src = `${window.baseURL}/assets/libraries/emulatorjs/4.2.3/loader.js`;
             script.onload = () => {
                 console.log('EmulatorJS loader loaded');
             };

@@ -5,7 +5,7 @@
         "platform": "neogeo",
         "year": 1998,
         "core": "fbneo",
-        "romFile": "/arcade-games/rassets/oms/mslug2.zip",
+        "romFile": "/arcade-games/assets/roms/mslug2.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/mslug2.jpg",
         "color": "#74390A"
@@ -27,7 +27,7 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "/arcade-games/rassets/oms/mslug5.zip",
+        "romFile": "/arcade-games/assets/roms/mslug5.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/mslug5.jpg",
         "color": "#74390A"
