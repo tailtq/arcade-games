@@ -89,7 +89,6 @@ export default {
             
             // Set up callbacks
             window.EJS_onGameStart = () => {
-                console.log('Game started:', game.name);
                 this.gameStore.setGameLoaded(true);
                 this.showNotification(`${game.name} loaded successfully!`, 'success');
             };

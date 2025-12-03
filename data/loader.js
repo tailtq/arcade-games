@@ -1,26 +1,26 @@
 (async function() {
     const scripts = [
-        "emulator.js",
-        "nipplejs.js",
-        "shaders.js",
-        "storage.js",
-        "gamepad.js",
-        "GameManager.js",
-        "socket.io.min.js",
-        "compression.js"
+        'emulator.js',
+        'nipplejs.js',
+        'shaders.js',
+        'storage.js',
+        'gamepad.js',
+        'GameManager.js',
+        'socket.io.min.js',
+        'compression.js'
     ];
     let scriptPath = `${window.baseURL}/data/`;
 
     function loadScript(file) {
         return new Promise(function(resolve) {
-            let script = document.createElement("script");
+            let script = document.createElement('script');
             script.src = function() {
-                if ("undefined" != typeof EJS_paths && typeof EJS_paths[file] === "string") {
+                if ('undefined' != typeof EJS_paths && typeof EJS_paths[file] === 'string') {
                     return EJS_paths[file];
-                } else if (file.endsWith("emulator.min.js")) {
+                } else if (file.endsWith('emulator.min.js')) {
                     return scriptPath + file;
                 } else {
-                    return scriptPath + "src/" + file;
+                    return scriptPath + 'src/' + file;
                 }
             }();
             script.onload = resolve;
@@ -33,10 +33,10 @@
 
     function loadStyle(file) {
         return new Promise(function(resolve) {
-            let css = document.createElement("link");
-            css.rel = "stylesheet";
+            let css = document.createElement('link');
+            css.rel = 'stylesheet';
             css.href = function() {
-                if ("undefined" != typeof EJS_paths && typeof EJS_paths[file] === "string") {
+                if ('undefined' != typeof EJS_paths && typeof EJS_paths[file] === 'string') {
                     return EJS_paths[file];
                 } else {
                     return scriptPath + file;
@@ -51,9 +51,9 @@
     }
 
     async function filesmissing(file) {
-        console.error("Failed to load " + file);
-        let minifiedFailed = file.includes(".min.") && !file.includes("socket");
-        console[minifiedFailed ? "warn" : "error"]("Failed to load " + file + " beacuse it's likly that the minified files are missing.\nTo fix this you have 3 options:\n1. You can download the zip from the latest release here: https://github.com/EmulatorJS/EmulatorJS/releases/latest - Stable\n2. You can download the zip from here: https://cdn.emulatorjs.org/latest/data/emulator.min.zip and extract it to the data/ folder. (easiest option) - Beta\n3. You can build the files by running `npm i && npm run build` in the data/minify folder. (hardest option) - Beta\nNote: you will probably need to do the same for the cores, extract them to the data/cores/ folder.");
+        console.error('Failed to load ' + file);
+        let minifiedFailed = file.includes('.min.') && !file.includes('socket');
+        console[minifiedFailed ? 'warn' : 'error']("Failed to load " + file + " beacuse it's likly that the minified files are missing.\nTo fix this you have 3 options:\n1. You can download the zip from the latest release here: https://github.com/EmulatorJS/EmulatorJS/releases/latest - Stable\n2. You can download the zip from here: https://cdn.emulatorjs.org/latest/data/emulator.min.zip and extract it to the data/ folder. (easiest option) - Beta\n3. You can build the files by running `npm i && npm run build` in the data/minify folder. (hardest option) - Beta\nNote: you will probably need to do the same for the cores, extract them to the data/cores/ folder.");
         if (minifiedFailed) {
             console.log("Attempting to load non-minified files");
             if (file === "emulator.min.js") {

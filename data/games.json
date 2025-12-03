@@ -5,7 +5,7 @@
         "platform": "neogeo",
         "year": 1998,
         "core": "fbneo",
-        "romFile": "/arcade-games/roms/mslug2.zip",
+        "romFile": "/arcade-games/rassets/oms/mslug2.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/mslug2.jpg",
         "color": "#74390A"
@@ -16,7 +16,7 @@
         "platform": "neogeo",
         "year": 1999,
         "core": "fbneo",
-        "romFile": "/arcade-games/roms/mslug3.zip",
+        "romFile": "/arcade-games/assets/roms/mslug3.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/mslug3.jpg",
         "color": "#74390A"
@@ -27,7 +27,7 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "/arcade-games/roms/mslug5.zip",
+        "romFile": "/arcade-games/rassets/oms/mslug5.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/mslug5.jpg",
         "color": "#74390A"
@@ -38,9 +38,20 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "/arcade-games/roms/doubledr.zip",
+        "romFile": "/arcade-games/assets/roms/doubledr.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/double-dragon.jpg",
         "color": "#74390A"
+    },
+    {
+        "id": "pokemon-heartgold",
+        "name": "Pokemon HeartGold",
+        "platform": "nds",
+        "year": 2009,
+        "core": "desmume",
+        "romFile": "/arcade-games/assets/roms/pokemon-heartgold.zip",
+        "genre": ["RPG"],
+        "screenshot": "/arcade-games/assets/images/pokemon-heartgold.jpg",
+        "color": "#FFCB05"
     }
 ]
