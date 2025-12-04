@@ -28,6 +28,8 @@ const template = `
         </div>
     </div>
 </div>
+
+<control-modal></control-modal>
 `;
 
 import { useGameStore } from '../stores/gameStore.js';
@@ -89,6 +91,32 @@ export default {
             window.EJS_language = 'en-US';
             window.EJS_DEBUG_XX = true;
             
+            // Universal key mapping - Easy to use controls for all games
+            // Arrow keys for movement, Z/X for A/B, Enter/Shift for Start/Select
+            window.EJS_defaultControls = {
+                0: { // Player 1
+                    0: { value: 'z', value2: 'BUTTON_1' },        // A button - Z
+                    1: { value: 'x', value2: 'BUTTON_2' },        // B button - X
+                    2: { value: 'c', value2: 'BUTTON_3' },        // X button - C
+                    3: { value: 'v', value2: 'BUTTON_4' },        // Y button - V
+                    4: { value: 'up arrow', value2: 'DPAD_UP' },  // Up - Arrow Up
+                    5: { value: 'down arrow', value2: 'DPAD_DOWN' }, // Down - Arrow Down
+                    6: { value: 'left arrow', value2: 'DPAD_LEFT' }, // Left - Arrow Left
+                    7: { value: 'right arrow', value2: 'DPAD_RIGHT' }, // Right - Arrow Right
+                    8: { value: 'a', value2: 'LEFT_TOP_SHOULDER' },  // L button - A
+                    9: { value: 's', value2: 'RIGHT_TOP_SHOULDER' }, // R button - S
+                    10: { value: 'd', value2: 'LEFT_BOTTOM_SHOULDER' },  // L2 button - D
+                    11: { value: 'f', value2: 'RIGHT_BOTTOM_SHOULDER' }, // R2 button - F
+                    12: { value: 'enter', value2: 'START' },      // Start - Enter
+                    13: { value: 'shift', value2: 'SELECT' },     // Select - Shift
+                    14: { value: 'q', value2: 'LEFT_STICK' },     // L3 button - Q
+                    15: { value: 'e', value2: 'RIGHT_STICK' }     // R3 button - E
+                },
+                1: {},
+                2: {},
+                3: {}
+            };
+            
             // Set up callbacks
             window.EJS_onGameStart = (e) => {
                 console.log('Game started', e);
@@ -110,11 +138,18 @@ export default {
                 });
             };
             
-            window.EJS_onSaveState = (e) => {
-                console.log('State saved', e, window.EJS_core);
-                const state = window.EJS_emulator.gameManager.getState();
-                const coreName = window.EJS_emulator.coreName;
-                this.downloadFile(`${game.name}_${new Date().getTime()}.${coreName}-state`, state, 'application/octet-stream');
+            window.EJS_onSaveState = () => {
+                console.log('Saving state...');
+                try {
+                    const state = window.EJS_emulator.gameManager.getState();
+                    const coreName = window.EJS_emulator?.coreName || game.core;
+                    console.log('State saved successfully', { coreName, size: state.byteLength });
+                    this.downloadFile(`${game.name}_${new Date().getTime()}_${coreName}.state`, state, 'application/octet-stream');
+                    this.showNotification('Game state saved', 'success');
+                } catch (error) {
+                    console.error('Error saving state:', error);
+                    this.showNotification('Failed to save state', 'error');
+                }
             };
 
             window.EJS_onSaveUpdate = function(e) {

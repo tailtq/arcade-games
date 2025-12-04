@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 import uvicorn
-import os
 from pathlib import Path
 
 # Create FastAPI app
@@ -12,7 +11,6 @@ app = FastAPI(title="FE Games Emulator Server")
 BASE_DIR = Path(__file__).parent
 
 # Mount static file directories
-app.mount("/arcade-games/data", StaticFiles(directory=BASE_DIR / "data"), name="data")
 app.mount("/arcade-games/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
 # app.mount("/", StaticFiles(directory=BASE_DIR), name="roms")
 

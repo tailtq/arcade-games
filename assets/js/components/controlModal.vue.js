@@ -1,6 +1,6 @@
 const template = `
 <!-- Controls Modal -->
-<div v-if="showControlsModal" class="modal-overlay" @click="toggleControls">
+<div v-if="gameStore.showControlsModal" class="modal-overlay" @click="toggleControls">
     <div class="controls-modal" @click.stop>
         <div class="modal-header">
             <h3>🎮 Game Controls</h3>
@@ -8,11 +8,11 @@ const template = `
         </div>
         <div class="controls-content">
             <div class="controls-section">
-                <h4>Player 1</h4>
+                <h4>🎮 Universal Game Controls</h4>
                 <div class="controls-grid">
                     <div class="control-item">
                         <span>Movement</span>
-                        <kbd>Arrow Keys</kbd>
+                        <kbd>↑</kbd> <kbd>↓</kbd> <kbd>←</kbd> <kbd>→</kbd>
                     </div>
                     <div class="control-item">
                         <span>A Button</span>
@@ -21,6 +21,26 @@ const template = `
                     <div class="control-item">
                         <span>B Button</span>
                         <kbd>X</kbd>
+                    </div>
+                    <div class="control-item">
+                        <span>X Button</span>
+                        <kbd>C</kbd>
+                    </div>
+                    <div class="control-item">
+                        <span>Y Button</span>
+                        <kbd>V</kbd>
+                    </div>
+                    <div class="control-item">
+                        <span>L / R Buttons</span>
+                        <kbd>A</kbd> / <kbd>S</kbd>
+                    </div>
+                    <div class="control-item">
+                        <span>L2 / R2 Buttons</span>
+                        <kbd>D</kbd> / <kbd>F</kbd>
+                    </div>
+                    <div class="control-item">
+                        <span>L3 / R3 Buttons</span>
+                        <kbd>Q</kbd> / <kbd>E</kbd>
                     </div>
                     <div class="control-item">
                         <span>Start</span>
@@ -32,43 +52,29 @@ const template = `
                     </div>
                 </div>
             </div>
-            <div class="controls-section">
-                <h4>Emulator</h4>
-                <div class="controls-grid">
-                    <div class="control-item">
-                        <span>Save State</span>
-                        <kbd>F2</kbd>
-                    </div>
-                    <div class="control-item">
-                        <span>Load State</span>
-                        <kbd>F4</kbd>
-                    </div>
-                    <div class="control-item">
-                        <span>Fullscreen</span>
-                        <kbd>F9</kbd>
-                    </div>
-                    <div class="control-item">
-                        <span>Screenshot</span>
-                        <kbd>F12</kbd>
-                    </div>
-                </div>
+            <div class="controls-note">
+                <p>💡 <strong>Tip:</strong> These controls work for all games regardless of the console. Arrow keys always move your character, Z/X are the main action buttons.</p>
             </div>
         </div>
     </div>
 </div>
 `;
 
+import { useGameStore } from '../stores/gameStore.js';
+
 export default {
     name: 'ControlModal',
     template: template,
-    data() {
+    setup() {
+        const gameStore = useGameStore();
+        
         return {
-            showControlsModal: false,
-        }
+            gameStore,
+        };
     },
     methods: {
         toggleControls() {
-            this.showControlsModal = !this.showControlsModal;
+            this.gameStore.setShowControlsModal(!this.gameStore.showControlsModal);
         }
     }
 }
