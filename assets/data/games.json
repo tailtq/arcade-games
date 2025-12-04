@@ -53,5 +53,16 @@
         "genre": ["RPG"],
         "screenshot": "/arcade-games/assets/images/pokemon-heartgold.jpg",
         "color": "#FFCB05"
+    },
+    {
+        "id": "megaman-x4",
+        "name": "Mega Man X4",
+        "platform": "psx",
+        "year": 1997,
+        "core": "pcsx_rearmed",
+        "romFile": "/arcade-games/assets/roms/megaman-x4.zip",
+        "genre": ["Action"],
+        "screenshot": "/arcade-games/assets/images/megaman-x4.jpg",
+        "color": "#0058A8"
     }
 ]
