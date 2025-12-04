@@ -9,7 +9,7 @@
         'socket.io.min.js',
         'compression.js'
     ];
-    let scriptPath = `${window.baseURL}/assets/libraries/emulatorjs/4.2.3/`;
+    let scriptPath = `${window.baseURL}/${window.emulatorJSPath}/`;
 
     function loadScript(file) {
         return new Promise(function(resolve) {
