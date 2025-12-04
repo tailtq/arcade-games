@@ -98,7 +98,7 @@ export default {
             
             window.EJS_onLoadState = (e) => {
                 // Trigger file upload dialog
-                this.uploadFile('.state,.dst', (data) => {
+                this.uploadFile('.state', (data) => {
                     try {
                         console.log('State loaded', e, data);
                         window.EJS_emulator.gameManager.loadState(new Uint8Array(data));
@@ -111,9 +111,10 @@ export default {
             };
             
             window.EJS_onSaveState = (e) => {
-                console.log('State saved', e);
+                console.log('State saved', e, window.EJS_core);
                 const state = window.EJS_emulator.gameManager.getState();
-                this.downloadFile(`${game.name}_${new Date().getTime()}.state`, state, 'application/octet-stream');
+                const coreName = window.EJS_emulator.coreName;
+                this.downloadFile(`${game.name}_${new Date().getTime()}.${coreName}-state`, state, 'application/octet-stream');
             };
 
             window.EJS_onSaveUpdate = function(e) {
@@ -137,7 +138,7 @@ export default {
             
             // Load the EmulatorJS loader
             const script = document.createElement('script');
-            script.src = `${window.baseURL}/assets/libraries/emulatorjs/4.2.3/loader.js`;
+            script.src = `${window.baseURL}/${window.emulatorJSPath}/loader.js`;
             script.onload = () => {
                 console.log('EmulatorJS loader loaded');
             };
