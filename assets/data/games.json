@@ -64,5 +64,16 @@
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/megaman-x4.jpg",
         "color": "#0058A8"
+    },
+    {
+        "id": "road-rash-1996",
+        "name": "Road Rash (1996)",
+        "platform": "psx",
+        "year": 1996,
+        "core": "segaSaturn",
+        "romFile": "/arcade-games/assets/roms/Road-Rash.zip",
+        "genre": ["Racing"],
+        "screenshot": "/arcade-games/assets/images/road-rash-1996.jpg",
+        "color": "#A80000"
     }
 ]
