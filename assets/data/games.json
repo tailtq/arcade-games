@@ -5,9 +5,9 @@
         "platform": "neogeo",
         "year": 1998,
         "core": "fbneo",
-        "romFile": "/arcade-games/assets/roms/mslug2.zip",
+        "romFile": "/arcade-games/assets/roms/neogeo/mslug2.zip",
         "genre": ["Action"],
-        "screenshot": "/arcade-games/assets/images/mslug2.jpg",
+        "screenshot": "/arcade-games/assets/images/games/neogeo/mslug2.jpg",
         "color": "#74390A"
     },
     {
@@ -16,9 +16,9 @@
         "platform": "neogeo",
         "year": 1999,
         "core": "fbneo",
-        "romFile": "/arcade-games/assets/roms/mslug3.zip",
+        "romFile": "/arcade-games/assets/roms/neogeo/mslug3.zip",
         "genre": ["Action"],
-        "screenshot": "/arcade-games/assets/images/mslug3.jpg",
+        "screenshot": "/arcade-games/assets/images/games/neogeo/mslug3.jpg",
         "color": "#74390A"
     },
     {
@@ -27,9 +27,9 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "/arcade-games/assets/roms/mslug5.zip",
+        "romFile": "/arcade-games/assets/roms/neogeo/mslug5.zip",
         "genre": ["Action"],
-        "screenshot": "/arcade-games/assets/images/mslug5.jpg",
+        "screenshot": "/arcade-games/assets/images/games/neogeo/mslug5.jpg",
         "color": "#74390A"
     },
     {
@@ -38,42 +38,53 @@
         "platform": "neogeo",
         "year": 2000,
         "core": "fbneo",
-        "romFile": "/arcade-games/assets/roms/doubledr.zip",
+        "romFile": "/arcade-games/assets/roms/neogeo/doubledr.zip",
         "genre": ["Action"],
-        "screenshot": "/arcade-games/assets/images/double-dragon.jpg",
+        "screenshot": "/arcade-games/assets/images/games/neogeo/double-dragon.jpg",
         "color": "#74390A"
     },
     {
         "id": "pokemon-heartgold",
         "name": "Pokemon HeartGold",
-        "platform": "nds",
+        "platform": "Nintendo DS",
         "year": 2009,
         "core": "desmume",
-        "romFile": "/arcade-games/assets/roms/pokemon-heartgold.zip",
+        "romFile": "/arcade-games/assets/roms/nintendo-ds/pokemon-heartgold.zip",
         "genre": ["RPG"],
-        "screenshot": "/arcade-games/assets/images/pokemon-heartgold.jpg",
+        "screenshot": "/arcade-games/assets/images/games/nintendo-ds/pokemon-heartgold.jpg",
         "color": "#FFCB05"
     },
     {
         "id": "megaman-x4",
         "name": "Mega Man X4",
-        "platform": "psx",
+        "platform": "PlayStation",
         "year": 1997,
         "core": "pcsx_rearmed",
-        "romFile": "/arcade-games/assets/roms/megaman-x4.zip",
+        "romFile": "/arcade-games/assets/roms/playstation/megaman-x4.zip",
         "genre": ["Action"],
-        "screenshot": "/arcade-games/assets/images/megaman-x4.jpg",
+        "screenshot": "/arcade-games/assets/images/games/playstation/megaman-x4.jpg",
         "color": "#0058A8"
     },
     {
         "id": "road-rash-1996",
         "name": "Road Rash (1996)",
-        "platform": "psx",
+        "platform": "Sega",
         "year": 1996,
         "core": "segaSaturn",
         "romFile": "/arcade-games/assets/roms/Road-Rash.zip",
         "genre": ["Racing"],
         "screenshot": "/arcade-games/assets/images/road-rash-1996.jpg",
+        "color": "#A80000"
+    },
+    {
+        "id": "saturn-bomberman",
+        "name": "Saturn Bomberman",
+        "platform": "Sega",
+        "year": 1996,
+        "core": "segaSaturn",
+        "romFile": "/arcade-games/assets/roms/sega/saturn/saturn-bomberman.zip",
+        "genre": ["Racing"],
+        "screenshot": "/arcade-games/assets/images/games/sega/saturn/saturn-bomberman.jpg",
         "color": "#A80000"
     }
 ]
