@@ -70,6 +70,15 @@ export default {
                 this.$router.push('/');
             }
         }
+
+        // Prevent default browser behavior for game control keys
+        this.preventDefaultGameKeys();
+    },
+    beforeUnmount() {
+        // Remove event listener when component is destroyed
+        if (this.gameKeyHandler) {
+            window.removeEventListener('keydown', this.gameKeyHandler);
+        }
     },
     methods: {
         ...navigationUtils.methods,
@@ -241,6 +250,47 @@ export default {
         },
         toggleControls() {
             this.gameStore.setShowControlsModal(!this.gameStore.showControlsModal);
+        },
+        preventDefaultGameKeys() {
+            console.log('Setting up game key handler');
+            // Prevent browser default behavior for game control keys
+            const gameKeys = [
+                'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+                ' ', // Spacebar
+                'Tab'
+            ];
+
+            this.gameKeyHandler = (event) => {
+                // Only prevent default when on the play page and not in the controls modal
+                if (this.gameStore.currentPage === 'play' && !this.gameStore.showControlsModal) {
+                    if (gameKeys.includes(event.key)) {
+                        event.preventDefault();
+                    }
+                }
+
+                // Handle global keyboard shortcuts
+                switch(event.key) {
+                    case 'F1':
+                        event.preventDefault();
+                        if (this.gameStore.currentPage === 'play') {
+                            this.toggleControls();
+                        }
+                        break;
+                    case 'F9':
+                        event.preventDefault();
+                        if (this.gameStore.currentPage === 'play') {
+                            this.toggleFullscreen();
+                        }
+                        break;
+                    case 'Escape':
+                        if (this.gameStore.showControlsModal) {
+                            this.toggleControls();
+                        }
+                        break;
+                }
+            };
+
+            window.addEventListener('keydown', this.gameKeyHandler);
         },
         handleKeydown(event) {
             // Handle global keyboard shortcuts
