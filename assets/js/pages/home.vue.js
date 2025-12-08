@@ -19,7 +19,7 @@ const template = `
             <!-- Games Grid -->
             <div class="games-grid">
                 <div 
-                    v-for="game in getPlatformGames(platform, 4)" 
+                    v-for="game in getPlatformGames(platform)" 
                     :key="game.id"
                     @click="playGame(game)"
                     class="game-card"

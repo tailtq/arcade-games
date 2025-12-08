@@ -44,6 +44,17 @@
         "color": "#74390A"
     },
     {
+        "id": "neo-bomberman",
+        "name": "Neo Bomberman",
+        "platform": "neogeo",
+        "year": 1998,
+        "core": "fbneo",
+        "romFile": "/arcade-games/assets/roms/neogeo/neobombe.zip",
+        "genre": ["Action"],
+        "screenshot": "/arcade-games/assets/images/games/neogeo/neo-bomberman.jpg",
+        "color": "#74390A"
+    },
+    {
         "id": "pokemon-heartgold",
         "name": "Pokemon HeartGold",
         "platform": "Nintendo DS",
@@ -85,6 +96,17 @@
         "romFile": "/arcade-games/assets/roms/sega/saturn/saturn-bomberman.zip",
         "genre": ["Racing"],
         "screenshot": "/arcade-games/assets/images/games/sega/saturn/saturn-bomberman.jpg",
+        "color": "#A80000"
+    },
+    {
+        "id": "cadillacs-and-dinosaurs",
+        "name": "Cadillacs and Dinosaurs",
+        "platform": "Capcom",
+        "year": 1996,
+        "core": "mame",
+        "romFile": "/arcade-games/assets/roms/capcom/dino.zip",
+        "genre": ["Racing"],
+        "screenshot": "/arcade-games/assets/images/games/capcom/cadillacs-and-dinosaurs.jpg",
         "color": "#A80000"
     }
 ]
