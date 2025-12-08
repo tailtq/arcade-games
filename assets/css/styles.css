@@ -344,6 +344,7 @@ body {
 /* Play Page Styles */
 .game-footer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
@@ -352,6 +353,19 @@ body {
     padding: 1rem;
     margin-bottom: 2rem;
     color: white;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+    gap: 1rem;
+}
+
+.game-footer .controls-minimal {
+    width: 100%;
+    order: 3;
+    margin-top: 0.5rem;
+    background: transparent;
+    padding: 0;
+    border: none;
 }
 
 .back-btn {
@@ -363,6 +377,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    pointer-events: auto;
 }
 
 .back-btn:hover {
@@ -389,6 +404,9 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: 500;
+    pointer-events: auto;
+    position: relative;
+    z-index: 11;
 }
 
 .control-btn:hover {
@@ -578,6 +596,85 @@ kbd {
     color: #60a5fa;
 }
 
+/* Minimal Controls Styles */
+.controls-minimal {
+    /* background: rgba(255, 255, 255, 0.08); */
+    /* backdrop-filter: blur(10px); */
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+}
+
+.controls-chips {
+    /* display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center; */
+}
+
+.player-chip {
+    /* display: flex; */
+    /* align-items: center; */
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.player-label {
+    color: #60a5fa;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.chip-controls {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.control-category {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.category-label {
+    color: #60a5fa;
+    font-weight: 600;
+    font-size: 0.75rem;
+    margin-right: 0.25rem;
+}
+
+.control-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    white-space: nowrap;
+}
+
+.control-chip kbd {
+    background: #ef4444;
+    color: white;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    font-weight: 600;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+
+
 /* Footer Styles */
 .footer {
     background: rgba(0, 0, 0, 0.2);
@@ -680,6 +777,16 @@ kbd {
     .filter-btn {
         padding: 0.4rem 0.8rem;
         font-size: 0.9rem;
+    }
+    
+    .controls-chips {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .player-chip {
+        width: 100%;
     }
 }
 

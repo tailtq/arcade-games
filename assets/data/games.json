@@ -8,7 +8,33 @@
         "romFile": "/arcade-games/assets/roms/neogeo/mslug2.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/games/neogeo/mslug2.jpg",
-        "color": "#74390A"
+        "color": "#74390A",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            }
+        }
     },
     {
         "id": "mslug3",
@@ -19,7 +45,33 @@
         "romFile": "/arcade-games/assets/roms/neogeo/mslug3.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/games/neogeo/mslug3.jpg",
-        "color": "#74390A"
+        "color": "#74390A",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            }
+        }
     },
     {
         "id": "mslug5",
@@ -30,7 +82,35 @@
         "romFile": "/arcade-games/assets/roms/neogeo/mslug5.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/games/neogeo/mslug5.jpg",
-        "color": "#74390A"
+        "color": "#74390A",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            },
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "double-dragon",
@@ -41,7 +121,35 @@
         "romFile": "/arcade-games/assets/roms/neogeo/doubledr.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/games/neogeo/double-dragon.jpg",
-        "color": "#74390A"
+        "color": "#74390A",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            },
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "neo-bomberman",
@@ -52,7 +160,35 @@
         "romFile": "/arcade-games/assets/roms/neogeo/neobombe.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/games/neogeo/neo-bomberman.jpg",
-        "color": "#74390A"
+        "color": "#74390A",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            },
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "pokemon-heartgold",
@@ -63,7 +199,26 @@
         "romFile": "/arcade-games/assets/roms/nintendo-ds/pokemon-heartgold.zip",
         "genre": ["RPG"],
         "screenshot": "/arcade-games/assets/images/games/nintendo-ds/pokemon-heartgold.jpg",
-        "color": "#FFCB05"
+        "color": "#FFCB05",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" },
+                "10": { "value": "q", "value2": "LEFT_TOP_SHOULDER" },
+                "11": { "value": "e", "value2": "RIGHT_TOP_SHOULDER" }
+            },
+            "1": {},
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "megaman-x4",
@@ -74,7 +229,26 @@
         "romFile": "/arcade-games/assets/roms/playstation/megaman-x4.zip",
         "genre": ["Action"],
         "screenshot": "/arcade-games/assets/images/games/playstation/megaman-x4.jpg",
-        "color": "#0058A8"
+        "color": "#0058A8",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" },
+                "10": { "value": "q", "value2": "LEFT_TOP_SHOULDER" },
+                "11": { "value": "e", "value2": "RIGHT_TOP_SHOULDER" }
+            },
+            "1": {},
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "road-rash-1996",
@@ -85,7 +259,28 @@
         "romFile": "/arcade-games/assets/roms/Road-Rash.zip",
         "genre": ["Racing"],
         "screenshot": "/arcade-games/assets/images/road-rash-1996.jpg",
-        "color": "#A80000"
+        "color": "#A80000",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" },
+                "10": { "value": "q", "value2": "LEFT_TOP_SHOULDER" },
+                "11": { "value": "e", "value2": "RIGHT_TOP_SHOULDER" },
+                "12": { "value": "tab", "value2": "LEFT_BOTTOM_SHOULDER" },
+                "13": { "value": "r", "value2": "RIGHT_BOTTOM_SHOULDER" }
+            },
+            "1": {},
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "saturn-bomberman",
@@ -96,7 +291,37 @@
         "romFile": "/arcade-games/assets/roms/sega/saturn/saturn-bomberman.zip",
         "genre": ["Racing"],
         "screenshot": "/arcade-games/assets/images/games/sega/saturn/saturn-bomberman.jpg",
-        "color": "#A80000"
+        "color": "#A80000",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" },
+                "10": { "value": "q", "value2": "LEFT_TOP_SHOULDER" },
+                "11": { "value": "e", "value2": "RIGHT_TOP_SHOULDER" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            },
+            "2": {},
+            "3": {}
+        }
     },
     {
         "id": "cadillacs-and-dinosaurs",
@@ -107,6 +332,34 @@
         "romFile": "/arcade-games/assets/roms/capcom/dino.zip",
         "genre": ["Racing"],
         "screenshot": "/arcade-games/assets/images/games/capcom/cadillacs-and-dinosaurs.jpg",
-        "color": "#A80000"
+        "color": "#A80000",
+        "keymap": {
+            "0": {
+                "0": { "value": "x", "value2": "BUTTON_2" },
+                "1": { "value": "s", "value2": "BUTTON_4" },
+                "2": { "value": "v", "value2": "SELECT" },
+                "3": { "value": "enter", "value2": "START" },
+                "4": { "value": "up arrow", "value2": "DPAD_UP" },
+                "5": { "value": "down arrow", "value2": "DPAD_DOWN" },
+                "6": { "value": "left arrow", "value2": "DPAD_LEFT" },
+                "7": { "value": "right arrow", "value2": "DPAD_RIGHT" },
+                "8": { "value": "z", "value2": "BUTTON_1" },
+                "9": { "value": "a", "value2": "BUTTON_3" }
+            },
+            "1": {
+                "0": { "value": "s", "value2": "BUTTON_2" },
+                "1": { "value": "w", "value2": "BUTTON_4" },
+                "2": { "value": "5", "value2": "SELECT" },
+                "3": { "value": "2", "value2": "START" },
+                "4": { "value": "r", "value2": "DPAD_UP" },
+                "5": { "value": "f", "value2": "DPAD_DOWN" },
+                "6": { "value": "d", "value2": "DPAD_LEFT" },
+                "7": { "value": "g", "value2": "DPAD_RIGHT" },
+                "8": { "value": "a", "value2": "BUTTON_1" },
+                "9": { "value": "q", "value2": "BUTTON_3" }
+            },
+            "2": {},
+            "3": {}
+        }
     }
 ]

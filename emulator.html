@@ -68,6 +68,18 @@
     </div>
 
     <script>
+        window.addEventListener('keydown', (e) => {
+            console.log('event here', e);
+            const gameKeys = [
+                'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+                ' ', // Spacebar
+                'Tab'
+            ];
+            if (gameKeys.includes(e.key)) {
+                e.preventDefault();
+            }
+        }, true);
+        
         // Parse URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const config = {

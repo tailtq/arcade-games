@@ -20,8 +20,8 @@ async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "message": "FE Games server is running"}
 
-
-@app.get("/{path:path}", response_class=HTMLResponse)
+# "/arcade-games/{path:path}"
+@app.get("/arcade-games/{path:path}", response_class=HTMLResponse)
 async def read_root(path: str):
     """Serve the main index.html file for client-side routing"""
     # If the path has a file extension, try to serve it as a static file
@@ -42,7 +42,7 @@ async def read_root(path: str):
 
 if __name__ == "__main__":
     print("Starting FE Games Emulator Server...")
-    print(f"Server will be available at: http://localhost:8000")
+    print(f"Server will be available at: http://localhost:8001")
     print(f"Serving files from: {BASE_DIR}")
     
     # Check if required directories exist

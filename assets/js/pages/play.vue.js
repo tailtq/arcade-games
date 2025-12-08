@@ -4,8 +4,17 @@ const template = `
     <div class="container">
         <!-- Emulator Container -->
         <div class="emulator-container">
-            <div id="game" class="game-screen">
-                <div v-if="!gameStore.gameLoaded" class="loading-screen">
+            <iframe 
+                v-if="iframeSrc"
+                id="game-iframe" 
+                :src="iframeSrc" 
+                class="game-screen"
+                frameborder="0"
+                allowfullscreen
+                allow="autoplay; fullscreen"
+            ></iframe>
+            <div v-else class="game-screen">
+                <div class="loading-screen">
                     <div class="loading-spinner"></div>
                     <div class="loading-text">Loading {{ gameStore.currentGame?.name }}...</div>
                     <div class="loading-progress">Initializing emulator...</div>
@@ -13,32 +22,32 @@ const template = `
             </div>
         </div>
 
-        <div class="game-footer" v-if="gameStore.currentGame">
-            <button @click="backToHome" class="back-btn">← Back to Games</button>
-            <div class="game-title-section">
-                <h2>{{ gameStore.currentGame.name }}</h2>
-                <div class="game-meta">
-                    <span class="platform-badge">{{ gameStore.currentGame.platform.toUpperCase() }}</span>
-                </div>
-            </div>
-            <div class="game-controls">
-                <button @click="toggleControls" class="control-btn">⌨️ Controls</button>
-                <button @click="toggleFullscreen" class="control-btn">⌞ ⌝ Fullscreen</button>
-            </div>
-        </div>
+        <!-- Game Controls Component (includes footer) -->
+        <game-controls 
+            :current-game="gameStore.currentGame"
+            @back-to-home="backToHome"
+            @toggle-fullscreen="toggleFullscreen"
+        ></game-controls>
     </div>
 </div>
-
-<control-modal></control-modal>
 `;
 
 import { useGameStore } from '../stores/gameStore.js';
 import navigationUtils from '../utils/navigation.js';
 import fileUtils from '../utils/file.js';
+import gameControls from '../components/gameControls.vue.js';
 
 export default {
     name: 'Detail',
+    components: {
+        gameControls,
+    },
     template: template,
+    data() {
+        return {
+            iframeSrc: null
+        };
+    },
     setup() {
         const gameStore = useGameStore();
         
@@ -71,13 +80,16 @@ export default {
             }
         }
 
-        // Prevent default browser behavior for game control keys
-        this.preventDefaultGameKeys();
+        // Listen for messages from iframe
+        this.setupMessageListener();
     },
     beforeUnmount() {
         // Remove event listener when component is destroyed
         if (this.gameKeyHandler) {
-            window.removeEventListener('keydown', this.gameKeyHandler);
+            window.removeEventListener('keydown', this.gameKeyHandler, true);
+        }
+        if (this.messageHandler) {
+            window.removeEventListener('message', this.messageHandler);
         }
     },
     methods: {
@@ -86,138 +98,93 @@ export default {
         initializeEmulator(game) {
             console.log('Initializing emulator for:', game.name);
             
-            // Clean up any existing emulator
-            this.cleanupEmulator();
+            // Build iframe URL with game configuration
+            const params = new URLSearchParams({
+                romFile: game.romFile,
+                core: game.core,
+                gameName: game.name,
+                color: game.color || '#0064ff',
+                baseURL: window.baseURL || '',
+                emulatorJSPath: window.emulatorJSPath || 'data'
+            });
             
-            // Set EmulatorJS configuration
-            window.EJS_player = '#game';
-            window.EJS_gameUrl = game.romFile;
-            window.EJS_core = game.core;
-            window.EJS_gameName = game.name;
-            window.EJS_color = game.color || '#0064ff';
-            window.EJS_startOnLoaded = true;
-            window.EJS_pathtodata = 'data/';
-            window.EJS_language = 'en-US';
-            window.EJS_DEBUG_XX = true;
+            // Add keymap data if available
+            if (game.keymap) {
+                params.append('keymap', JSON.stringify(game.keymap));
+            }
             
-            // Universal key mapping - Easy to use controls for all games
-            // Arrow keys for movement, Z/X for A/B, Enter/Shift for Start/Select
-            window.EJS_defaultControls = {
-                0: { // Player 1
-                    0: { value: 'z', value2: 'BUTTON_1' },        // A button - Z
-                    1: { value: 'x', value2: 'BUTTON_2' },        // B button - X
-                    2: { value: 'c', value2: 'BUTTON_3' },        // X button - C
-                    3: { value: 'v', value2: 'BUTTON_4' },        // Y button - V
-                    4: { value: 'up arrow', value2: 'DPAD_UP' },  // Up - Arrow Up
-                    5: { value: 'down arrow', value2: 'DPAD_DOWN' }, // Down - Arrow Down
-                    6: { value: 'left arrow', value2: 'DPAD_LEFT' }, // Left - Arrow Left
-                    7: { value: 'right arrow', value2: 'DPAD_RIGHT' }, // Right - Arrow Right
-                    8: { value: 'a', value2: 'LEFT_TOP_SHOULDER' },  // L button - A
-                    9: { value: 's', value2: 'RIGHT_TOP_SHOULDER' }, // R button - S
-                    10: { value: 'd', value2: 'LEFT_BOTTOM_SHOULDER' },  // L2 button - D
-                    11: { value: 'f', value2: 'RIGHT_BOTTOM_SHOULDER' }, // R2 button - F
-                    12: { value: 'enter', value2: 'START' },      // Start - Enter
-                    13: { value: 'shift', value2: 'SELECT' },     // Select - Shift
-                    14: { value: 'q', value2: 'LEFT_STICK' },     // L3 button - Q
-                    15: { value: 'e', value2: 'RIGHT_STICK' }     // R3 button - E
-                },
-                1: {},
-                2: {},
-                3: {}
-            };
-            
-            // Set up callbacks
-            window.EJS_onGameStart = (e) => {
-                console.log('Game started', e);
-                this.gameStore.setGameLoaded(true);
-                this.showNotification(`${game.name} loaded successfully!`, 'success');
-            };
-            
-            window.EJS_onLoadState = (e) => {
-                // Trigger file upload dialog
-                this.uploadFile('.state', (data) => {
-                    try {
-                        console.log('State loaded', e, data);
-                        window.EJS_emulator.gameManager.loadState(new Uint8Array(data));
+            this.iframeSrc = `${window.baseURL}/emulator.html?${params.toString()}`;
+            console.log('Iframe URL:', this.iframeSrc);
+        },
+        setupMessageListener() {
+            this.messageHandler = (event) => {
+                // Only accept messages from our iframe
+                const iframe = document.getElementById('game-iframe');
+                console.log('Received message from iframe:', event.data);
+                if (!iframe || event.source !== iframe.contentWindow) {
+                    return;
+                }
+
+                switch (event.data.type) {
+                    case 'gameLoaded':
+                        this.gameStore.setGameLoaded(true);
+                        this.showNotification(`${event.data.gameName} loaded successfully!`, 'success');
+                        break;
+                    
+                    case 'error':
+                        this.showNotification(event.data.message, 'error');
+                        break;
+                    
+                    case 'loadStateRequested':
+                        this.handleLoadStateRequest();
+                        break;
+                    
+                    case 'stateSaved':
+                        this.handleStateSaved(event.data);
+                        break;
+                    
+                    case 'stateLoaded':
                         this.showNotification('State loaded from file', 'success');
-                    } catch (error) {
-                        console.error('Error loading state:', error);
-                        this.showNotification('Failed to load state file', 'error');
-                    }
-                });
-            };
-            
-            window.EJS_onSaveState = () => {
-                console.log('Saving state...');
-                try {
-                    const state = window.EJS_emulator.gameManager.getState();
-                    const coreName = window.EJS_emulator?.coreName || game.core;
-                    console.log('State saved successfully', { coreName, size: state.byteLength });
-                    this.downloadFile(`${game.name}_${new Date().getTime()}_${coreName}.state`, state, 'application/octet-stream');
-                    this.showNotification('Game state saved', 'success');
-                } catch (error) {
-                    console.error('Error saving state:', error);
-                    this.showNotification('Failed to save state', 'error');
+                        break;
                 }
             };
 
-            window.EJS_onSaveUpdate = function(e) {
-                console.log('The contents of the save file have changed!', e);
-            }
-            
-            window.EJS_onError = (error) => {
-                console.error('Emulator error:', error);
-                this.showNotification('Failed to load game. Check ROM file and console.', 'error');
-            };
-            
-            // Load EmulatorJS
-            this.loadEmulatorJS();
+            window.addEventListener('message', this.messageHandler);
         },
-        loadEmulatorJS() {
-            // Remove existing loader script if present
-            const existingScript = document.querySelector('script[src*="loader.js"]');
-            if (existingScript) {
-                existingScript.remove();
-            }
-            
-            // Load the EmulatorJS loader
-            const script = document.createElement('script');
-            script.src = `${window.baseURL}/${window.emulatorJSPath}/loader.js`;
-            script.onload = () => {
-                console.log('EmulatorJS loader loaded');
-            };
-            script.onerror = () => {
-                console.error('Failed to load EmulatorJS');
-                this.showNotification('Failed to load emulator. Check data files.', 'error');
-            };
-            document.head.appendChild(script);
-        },
-        cleanupEmulator() {
-            // Clear the game container
-            const gameContainer = document.getElementById('game');
-            if (gameContainer) {
-                gameContainer.innerHTML = `
-                    <div class="loading-screen">
-                        <div class="loading-spinner"></div>
-                        <div class="loading-text">Loading ${this.gameStore.currentGame?.name || 'Game'}...</div>
-                        <div class="loading-progress">Initializing emulator...</div>
-                    </div>
-                `;
-            }
-            
-            // Clear EmulatorJS globals
-            const ejsVars = Object.keys(window).filter(key => key.startsWith('EJS_'));
-            ejsVars.forEach(key => {
-                delete window[key];
+        handleLoadStateRequest() {
+            // Trigger file upload dialog
+            this.uploadFile('.state', (data) => {
+                try {
+                    const iframe = document.getElementById('game-iframe');
+                    if (iframe && iframe.contentWindow) {
+                        iframe.contentWindow.postMessage({
+                            type: 'loadState',
+                            stateData: Array.from(new Uint8Array(data))
+                        }, '*');
+                    }
+                } catch (error) {
+                    console.error('Error loading state:', error);
+                    this.showNotification('Failed to load state file', 'error');
+                }
             });
         },
+        handleStateSaved(data) {
+            try {
+                const stateArray = new Uint8Array(data.state);
+                const fileName = `${data.gameName}_${new Date().getTime()}_${data.coreName}.state`;
+                this.downloadFile(fileName, stateArray, 'application/octet-stream');
+            } catch (error) {
+                console.error('Error saving state:', error);
+                this.showNotification('Failed to save state', 'error');
+            }
+        },
         toggleFullscreen() {
-            const gameElement = document.getElementById('game');
-            if (gameElement) {
+            const iframe = document.getElementById('game-iframe');
+            if (iframe) {
                 if (document.fullscreenElement) {
                     document.exitFullscreen();
                 } else {
-                    gameElement.requestFullscreen().catch(err => {
+                    iframe.requestFullscreen().catch(err => {
                         console.log('Error attempting to enable fullscreen:', err);
                         this.showNotification('Fullscreen not supported', 'warning');
                     });
@@ -248,71 +215,5 @@ export default {
                 }, 300);
             }, 3000);
         },
-        toggleControls() {
-            this.gameStore.setShowControlsModal(!this.gameStore.showControlsModal);
-        },
-        preventDefaultGameKeys() {
-            console.log('Setting up game key handler');
-            // Prevent browser default behavior for game control keys
-            const gameKeys = [
-                'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
-                ' ', // Spacebar
-                'Tab'
-            ];
-
-            this.gameKeyHandler = (event) => {
-                // Only prevent default when on the play page and not in the controls modal
-                if (this.gameStore.currentPage === 'play' && !this.gameStore.showControlsModal) {
-                    if (gameKeys.includes(event.key)) {
-                        event.preventDefault();
-                    }
-                }
-
-                // Handle global keyboard shortcuts
-                switch(event.key) {
-                    case 'F1':
-                        event.preventDefault();
-                        if (this.gameStore.currentPage === 'play') {
-                            this.toggleControls();
-                        }
-                        break;
-                    case 'F9':
-                        event.preventDefault();
-                        if (this.gameStore.currentPage === 'play') {
-                            this.toggleFullscreen();
-                        }
-                        break;
-                    case 'Escape':
-                        if (this.gameStore.showControlsModal) {
-                            this.toggleControls();
-                        }
-                        break;
-                }
-            };
-
-            window.addEventListener('keydown', this.gameKeyHandler);
-        },
-        handleKeydown(event) {
-            // Handle global keyboard shortcuts
-            switch(event.key) {
-                case 'F1':
-                    event.preventDefault();
-                    if (this.gameStore.currentPage === 'play') {
-                        this.toggleControls();
-                    }
-                    break;
-                case 'F9':
-                    event.preventDefault();
-                    if (this.gameStore.currentPage === 'play') {
-                        this.toggleFullscreen();
-                    }
-                    break;
-                case 'Escape':
-                    if (this.gameStore.showControlsModal) {
-                        this.toggleControls();
-                    }
-                    break;
-            }
-        }
     },
 };
