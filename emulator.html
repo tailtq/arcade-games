@@ -93,6 +93,8 @@
             console.log('Initializing emulator with config:', config);
 
             // Set EmulatorJS configuration
+            window.baseURL = config.baseURL;
+            window.emulatorJSPath = config.emulatorJSPath;
             window.EJS_player = '#game';
             window.EJS_gameUrl = config.romFile;
             window.EJS_core = config.core;
