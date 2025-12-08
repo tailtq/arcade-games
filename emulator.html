@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emulator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        #game {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .loading-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .loading-progress {
+            font-size: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div class="loading-screen">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading Game...</div>
+            <div class="loading-progress">Initializing emulator...</div>
+        </div>
+    </div>
+
+    <script>
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const config = {
+            romFile: urlParams.get('romFile'),
+            core: urlParams.get('core'),
+            gameName: urlParams.get('gameName'),
+            color: urlParams.get('color') || '#0064ff',
+            baseURL: urlParams.get('baseURL') || '',
+            emulatorJSPath: urlParams.get('emulatorJSPath') || 'data'
+        };
+
+        // Validate required parameters
+        if (!config.romFile || !config.core || !config.gameName) {
+            console.error('Missing required parameters:', config);
+            document.querySelector('.loading-text').textContent = 'Error: Missing game configuration';
+            document.querySelector('.loading-progress').textContent = 'Please reload the page';
+        } else {
+            // Initialize EmulatorJS
+            initializeEmulator();
+        }
+
+        function initializeEmulator() {
+            console.log('Initializing emulator with config:', config);
+
+            // Set EmulatorJS configuration
+            window.EJS_player = '#game';
+            window.EJS_gameUrl = config.romFile;
+            window.EJS_core = config.core;
+            window.EJS_gameName = config.gameName;
+            window.EJS_color = config.color;
+            window.EJS_startOnLoaded = true;
+            window.EJS_pathtodata = config.emulatorJSPath + '/';
+            window.EJS_language = 'en-US';
+            window.EJS_DEBUG_XX = true;
+
+            // Universal key mapping - Easy to use controls for all games
+            window.EJS_defaultControls = {
+                0: { // Player 1
+                    0: { value: 'z', value2: 'BUTTON_1' },        // A button - Z
+                    1: { value: 'x', value2: 'BUTTON_2' },        // B button - X
+                    2: { value: 'c', value2: 'BUTTON_3' },        // X button - C
+                    3: { value: 'v', value2: 'BUTTON_4' },        // Y button - V
+                    4: { value: 'up arrow', value2: 'DPAD_UP' },  // Up - Arrow Up
+                    5: { value: 'down arrow', value2: 'DPAD_DOWN' }, // Down - Arrow Down
+                    6: { value: 'left arrow', value2: 'DPAD_LEFT' }, // Left - Arrow Left
+                    7: { value: 'right arrow', value2: 'DPAD_RIGHT' }, // Right - Arrow Right
+                    8: { value: 'a', value2: 'LEFT_TOP_SHOULDER' },  // L button - A
+                    9: { value: 's', value2: 'RIGHT_TOP_SHOULDER' }, // R button - S
+                    10: { value: 'd', value2: 'LEFT_BOTTOM_SHOULDER' },  // L2 button - D
+                    11: { value: 'f', value2: 'RIGHT_BOTTOM_SHOULDER' }, // R2 button - F
+                    12: { value: 'enter', value2: 'START' },      // Start - Enter
+                    13: { value: 'shift', value2: 'SELECT' },     // Select - Shift
+                    14: { value: 'q', value2: 'LEFT_STICK' },     // L3 button - Q
+                    15: { value: 'e', value2: 'RIGHT_STICK' }     // R3 button - E
+                },
+                1: {},
+                2: {},
+                3: {}
+            };
+
+            // Set up callbacks
+            window.EJS_onGameStart = function(e) {
+                console.log('Game started', e);
+                sendMessageToParent({
+                    type: 'gameLoaded',
+                    success: true,
+                    gameName: config.gameName
+                });
+            };
+
+            window.EJS_onLoadState = function(e) {
+                console.log('Load state requested', e);
+                sendMessageToParent({
+                    type: 'loadStateRequested'
+                });
+            };
+
+            window.EJS_onSaveState = function() {
+                console.log('Saving state...');
+                try {
+                    const state = window.EJS_emulator.gameManager.getState();
+                    const coreName = window.EJS_emulator?.coreName || config.core;
+                    console.log('State saved successfully', { coreName, size: state.byteLength });
+                    
+                    sendMessageToParent({
+                        type: 'stateSaved',
+                        state: Array.from(new Uint8Array(state)),
+                        coreName: coreName,
+                        gameName: config.gameName
+                    });
+                } catch (error) {
+                    console.error('Error saving state:', error);
+                    sendMessageToParent({
+                        type: 'error',
+                        message: 'Failed to save state'
+                    });
+                }
+            };
+
+            window.EJS_onSaveUpdate = function(e) {
+                console.log('The contents of the save file have changed!', e);
+            };
+
+            window.EJS_onError = function(error) {
+                console.error('Emulator error:', error);
+                sendMessageToParent({
+                    type: 'error',
+                    message: 'Failed to load game. Check ROM file and console.'
+                });
+            };
+
+            // Load EmulatorJS
+            loadEmulatorJS();
+        }
+
+        function loadEmulatorJS() {
+            const script = document.createElement('script');
+            script.src = `${config.baseURL}/${config.emulatorJSPath}/loader.js`;
+            script.onload = function() {
+                console.log('EmulatorJS loader loaded');
+            };
+            script.onerror = function() {
+                console.error('Failed to load EmulatorJS');
+                sendMessageToParent({
+                    type: 'error',
+                    message: 'Failed to load emulator. Check data files.'
+                });
+            };
+            document.head.appendChild(script);
+        }
+
+        function sendMessageToParent(message) {
+            if (window.parent !== window) {
+                window.parent.postMessage(message, '*');
+            }
+        }
+
+        // Listen for messages from parent
+        window.addEventListener('message', function(event) {
+            console.log('Received message from parent:', event.data);
+            
+            if (event.data.type === 'loadState' && event.data.stateData) {
+                try {
+                    const stateArray = new Uint8Array(event.data.stateData);
+                    window.EJS_emulator.gameManager.loadState(stateArray);
+                    sendMessageToParent({
+                        type: 'stateLoaded',
+                        success: true
+                    });
+                } catch (error) {
+                    console.error('Error loading state:', error);
+                    sendMessageToParent({
+                        type: 'error',
+                        message: 'Failed to load state file'
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>
