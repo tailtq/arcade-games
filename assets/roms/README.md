@@ -20,3 +20,5 @@ roms/
 Once you place the ROM file here, you can start the web server and play the game!
 
 - Road Rash 1996: https://www.myabandonware.com/game/road-rash-bez#download
+- Neo Bomberman: https://wowroms.com/en/roms/mame-0.139u1/download-neo-bomberman/5595.html
+- Cadillacs and Dinosaurs: https://wowroms.com/en/roms/mame-0.139u1/download-cadillacs-and-dinosaurs-world-930201/3133.html
