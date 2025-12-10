@@ -48,8 +48,6 @@ let messageHandler = null
 let gameKeyHandler = null
 
 const initializeEmulator = (game) => {
-  console.log('Initializing emulator for:', game.name)
-  
   // Build iframe URL with game configuration
   const params = new URLSearchParams({
     romFile: game.romFile,
@@ -66,7 +64,6 @@ const initializeEmulator = (game) => {
   }
   
   iframeSrc.value = `${window.baseURL}/emulator.html?${params.toString()}`
-  console.log('Iframe URL:', iframeSrc.value)
 }
 
 const setupMessageListener = () => {

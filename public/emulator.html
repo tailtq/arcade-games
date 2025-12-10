@@ -69,7 +69,6 @@
 
     <script>
         window.addEventListener('keydown', (e) => {
-            console.log('event here', e);
             const gameKeys = [
                 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
                 ' ', // Spacebar
@@ -120,10 +119,8 @@
 
             // Use custom keymap if provided, otherwise use default controls
             if (config.keymap) {
-                console.log('Using custom keymap from game configuration:', config.keymap);
                 window.EJS_defaultControls = config.keymap;
             } else {
-                console.log('Using default keymap');
                 // Universal key mapping - Easy to use controls for all games
                 window.EJS_defaultControls = {
                     0: { // Player 1
@@ -152,7 +149,6 @@
 
             // Set up callbacks
             window.EJS_onGameStart = function(e) {
-                console.log('Game started', e);
                 sendMessageToParent({
                     type: 'gameLoaded',
                     success: true,
@@ -161,14 +157,12 @@
             };
 
             window.EJS_onLoadState = function(e) {
-                console.log('Load state requested', e);
                 sendMessageToParent({
                     type: 'loadStateRequested'
                 });
             };
 
             window.EJS_onSaveState = function() {
-                console.log('Saving state...');
                 try {
                     const state = window.EJS_emulator.gameManager.getState();
                     const coreName = window.EJS_emulator?.coreName || config.core;
