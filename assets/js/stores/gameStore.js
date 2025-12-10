@@ -11,6 +11,7 @@ export const useGameStore = Pinia.defineStore('game', {
     getters: {
         availablePlatforms: (state) => {
             const platforms = [...new Set(state.games.map(game => game.platform))];
+            console.log(platforms.sort());
             return platforms.sort();
         },
         filteredGames: (state) => {

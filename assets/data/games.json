@@ -2,7 +2,7 @@
     {
         "id": "mslug2",
         "name": "Metal Slug 2",
-        "platform": "neogeo",
+        "platform": "Neogeo",
         "year": 1998,
         "core": "fbneo",
         "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/neogeo/mslug2.zip",
@@ -39,7 +39,7 @@
     {
         "id": "mslug3",
         "name": "Metal Slug 3",
-        "platform": "neogeo",
+        "platform": "Neogeo",
         "year": 1999,
         "core": "fbneo",
         "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/neogeo/mslug3.zip",
@@ -76,7 +76,7 @@
     {
         "id": "mslug5",
         "name": "Metal Slug 5",
-        "platform": "neogeo",
+        "platform": "Neogeo",
         "year": 2000,
         "core": "fbneo",
         "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/neogeo/mslug5.zip",
@@ -115,7 +115,7 @@
     {
         "id": "double-dragon",
         "name": "Double Dragon",
-        "platform": "neogeo",
+        "platform": "Neogeo",
         "year": 2000,
         "core": "fbneo",
         "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/neogeo/doubledr.zip",
@@ -154,7 +154,7 @@
     {
         "id": "neo-bomberman",
         "name": "Neo Bomberman",
-        "platform": "neogeo",
+        "platform": "Neogeo",
         "year": 1998,
         "core": "fbneo",
         "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/neogeo/neobombe.zip",
