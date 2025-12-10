@@ -1,41 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailtq | Retro Gaming</title>
-    <script>
-        (function(){
-            var redirect = sessionStorage.redirect;
-            delete sessionStorage.redirect;
-            if (redirect && redirect != location.href) {
-                history.replaceState(null, null, redirect);
-            }
-        })();
-    </script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="https://unpkg.com/vue-router@4"></script>
-    <script src="https://unpkg.com/vue-demi"></script>
-    <script src="https://unpkg.com/pinia@2"></script>
-    <link rel="stylesheet" href="/arcade-games/assets/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tailtq | Retro Gaming</title>
+  <script>
+    (function(){
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="app" v-cloak>
-        <!-- Navigation Header -->
-        <app-header></app-header>
-        <router-view></router-view>
-        <app-footer></app-footer>
-    </div>
-
-    <script>
-        EJS_AdSize = ["800px", "500px"];
-        window.EJS_AdSize = ["800px", "500px"];
-        window.baseURL = '/arcade-games';
-        window.emulatorJSPath = 'assets/libraries/emulatorjs/4.2.3';
-    </script>
-    <script type="module" src="/arcade-games/assets/js/app.js"></script>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

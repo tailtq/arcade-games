@@ -8,7 +8,7 @@ from pathlib import Path
 app = FastAPI(title="FE Games Emulator Server")
 
 # Get the directory where this script is located
-BASE_DIR = Path(__file__).parent
+BASE_DIR = Path(__file__).parent / "dist"
 
 # Mount static file directories
 app.mount("/arcade-games/assets", StaticFiles(directory=BASE_DIR / "assets"), name="assets")
