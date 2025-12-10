@@ -15,5 +15,5 @@ import ControlModal from '@/components/ControlModal.vue'
 </script>
 
 <style>
-@import '/css/styles.css';
+@import '/css/style.css';
 </style>

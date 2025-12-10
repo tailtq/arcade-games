@@ -7,7 +7,7 @@ All static assets have been moved to the `public/` folder for proper Vite handli
 ```
 public/
 ├── css/
-│   └── styles.css          # Main stylesheet
+│   └── style.css          # Main stylesheet
 ├── data/
 │   ├── games.json          # Game metadata
 │   └── faulty-games.json   # (if needed)
@@ -37,7 +37,7 @@ Assets in `public/` are referenced with absolute paths:
 
 <!-- CSS (in App.vue) -->
 <style>
-@import '/css/styles.css';
+@import '/css/style.css';
 </style>
 ```
 
@@ -53,7 +53,7 @@ window.emulatorJSPath = 'libraries/emulatorjs/4.2.3'
 ## ⚙️ How It Works
 
 1. **During Development**: Vite serves files from `public/` at the root
-   - `public/css/styles.css` → `http://localhost:8001/arcade-games/css/styles.css`
+   - `public/css/style.css` → `http://localhost:8001/arcade-games/css/style.css`
 
 2. **During Build**: Vite copies `public/` contents to `dist/` root
    - Files are accessible at the same paths in production
@@ -78,7 +78,7 @@ The original `assets/` folder is kept for reference but is no longer used by the
 The following files were updated to reference the public folder:
 
 1. **`src/App.vue`**
-   - CSS import: `@import '/css/styles.css';`
+   - CSS import: `@import '/css/style.css';`
 
 2. **`src/stores/gameStore.js`**
    - Games data: `fetch(`${baseURL}data/games.json`)`

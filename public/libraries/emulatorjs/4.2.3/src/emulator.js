@@ -3300,7 +3300,7 @@ class EmulatorJS {
     setupKeys() {
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < 30; j++) {
-                if (this.controls[i][j]) {
+                if (this.controls[i] && this.controls[i][j]) {
                     this.controls[i][j].value = parseInt(this.keyLookup(this.controls[i][j].value));
                     if (this.controls[i][j].value === -1 && this.debug) {
                         delete this.controls[i][j].value;
