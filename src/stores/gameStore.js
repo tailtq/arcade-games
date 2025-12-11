@@ -5,9 +5,7 @@ export const useGameStore = defineStore('game', {
     currentGame: null,
     selectedPlatform: 'all',
     games: [],
-    gameLoaded: false,
     showControlsModal: false,
-    currentPage: 'home',
     isLoadingGames: false
   }),
   
@@ -72,20 +70,8 @@ export const useGameStore = defineStore('game', {
       this.currentGame = game
     },
     
-    setSelectedPlatform(platform) {
-      this.selectedPlatform = platform
-    },
-    
-    setGameLoaded(loaded) {
-      this.gameLoaded = loaded
-    },
-    
     setShowControlsModal(show) {
       this.showControlsModal = show
-    },
-    
-    setCurrentPage(page) {
-      this.currentPage = page
     },
     
     addGame(game) {

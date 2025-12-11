@@ -77,7 +77,6 @@ const setupMessageListener = () => {
 
     switch (event.data.type) {
       case 'gameLoaded':
-        gameStore.setGameLoaded(true)
         showNotification(`${event.data.gameName} loaded successfully!`, 'success')
         break
       
@@ -185,14 +184,7 @@ onMounted(async () => {
 
     if (game) {
       gameStore.setCurrentGame(game)
-      gameStore.setCurrentPage('play')
-
-      // Initialize emulator after a short delay to ensure DOM is ready
-      nextTick(() => {
-        setTimeout(() => {
-          initializeEmulator(game)
-        }, 100)
-      })
+      initializeEmulator(game)
     } else {
       // Game not found, redirect to home
       router.push('/')
@@ -211,5 +203,6 @@ onBeforeUnmount(() => {
   if (messageHandler) {
     window.removeEventListener('message', messageHandler)
   }
+  gameStore.setCurrentGame(null)
 })
 </script>
