@@ -19,7 +19,7 @@
         <!-- Games Grid -->
         <div class="games-grid">
           <div 
-            v-for="game in getPlatformGames(platform)" 
+            v-for="game in getPlatformGames(platform, null, true)" 
             :key="game.id"
             @click="playGame(game)"
             class="game-card"
@@ -67,8 +67,8 @@ const viewPlatform = (platform) => {
   router.push(`/platform/${platform}`)
 }
 
-const getPlatformGames = (platform, limit = null) => {
-  const games = gameStore.getGamesByPlatform(platform)
+const getPlatformGames = (platform, limit = null, popular = null) => {
+  let games = gameStore.getGamesByPlatform(platform, popular)
   return limit ? games.slice(0, limit) : games
 }
 

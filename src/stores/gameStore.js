@@ -40,7 +40,14 @@ export const useGameStore = defineStore('game', {
     },
     
     getGamesByPlatform: (state) => {
-      return (platform) => state.games.filter(game => game.platform === platform)
+      return (platform, popular = null) => {
+        let games = state.games.filter(game => game.platform === platform)
+        if (popular !== null) {
+          games = games.filter(game => game.popular === popular)
+        }
+        games.sort((a, b) => a.name.localeCompare(b.name))
+        return games
+      }
     }
   },
   
