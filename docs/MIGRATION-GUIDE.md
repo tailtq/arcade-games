@@ -11,8 +11,7 @@ src/
 ├── components/          # Reusable Vue components
 │   ├── AppHeader.vue   # Main header (converted from header.vue.js)
 │   ├── AppFooter.vue   # Footer (converted from footer.vue.js)
-│   ├── GameControls.vue # Game controls (converted from gameControls.vue.js)
-│   └── ControlModal.vue # Controls modal (converted from controlModal.vue.js)
+│   └── GameControls.vue # Game controls (converted from gameControls.vue.js)
 ├── views/              # Page components (routes)
 │   ├── HomeView.vue    # Home page (converted from home.vue.js)
 │   ├── PlatformView.vue # Platform page (converted from platform.vue.js)

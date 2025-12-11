@@ -11,8 +11,7 @@ fe-games/
 │   ├── components/      # Vue components
 │   │   ├── AppHeader.vue
 │   │   ├── AppFooter.vue
-│   │   ├── GameControls.vue
-│   │   └── ControlModal.vue
+│   │   └── GameControls.vue
 │   ├── views/           # Page components
 │   │   ├── HomeView.vue
 │   │   ├── PlatformView.vue
@@ -95,7 +94,6 @@ npm run preview
 - `AppHeader.vue`: Main navigation header
 - `AppFooter.vue`: Footer component
 - `GameControls.vue`: Game control display
-- `ControlModal.vue`: Modal for displaying controls
 
 ### Views (Pages)
 - `HomeView.vue`: Home page with game library
