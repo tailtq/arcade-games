@@ -8,7 +8,6 @@
 | `assets/js/components/header.vue.js` | `src/components/AppHeader.vue` | ✅ Converted |
 | `assets/js/components/footer.vue.js` | `src/components/AppFooter.vue` | ✅ Converted |
 | `assets/js/components/gameControls.vue.js` | `src/components/GameControls.vue` | ✅ Converted |
-| `assets/js/components/controlModal.vue.js` | `src/components/ControlModal.vue` | ✅ Converted |
 
 ### Pages/Views
 | Old File | New File | Status |

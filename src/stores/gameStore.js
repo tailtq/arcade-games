@@ -5,7 +5,6 @@ export const useGameStore = defineStore('game', {
     currentGame: null,
     selectedPlatform: 'all',
     games: [],
-    showControlsModal: false,
     isLoadingGames: false
   }),
   
@@ -68,10 +67,6 @@ export const useGameStore = defineStore('game', {
     
     setCurrentGame(game) {
       this.currentGame = game
-    },
-    
-    setShowControlsModal(show) {
-      this.showControlsModal = show
     },
     
     addGame(game) {
