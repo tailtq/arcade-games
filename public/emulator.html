@@ -115,7 +115,16 @@
             window.EJS_startOnLoaded = true;
             window.EJS_pathtodata = config.emulatorJSPath + '/';
             window.EJS_language = 'en-US';
-            window.EJS_DEBUG_XX = true;
+            window.EJS_DEBUG_XX = false;
+            
+            // Enable IndexedDB caching for ROMs and cores
+            // Cache limit: 5GB (default is 1GB)
+            window.EJS_cacheLimit = 5 * 1024 * 1024 * 1024;
+            // Do not disable databases (ensure caching is enabled)
+            window.indexedDB = true;
+            window.EJS_disableDatabases = false;
+            window.EJS_disableLocalStorage = false;
+            window.disableDatabases = false;
 
             // Use custom keymap if provided, otherwise use default controls
             if (config.keymap) {
