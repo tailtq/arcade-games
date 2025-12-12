@@ -1,19 +1,19 @@
 {
     "0": {
         "0": {
-            "value": "x",
+            "value": "s",
             "value2": "BUTTON_2"
         },
         "1": {
-            "value": "s",
+            "value": "f",
             "value2": "BUTTON_4"
         },
         "2": {
-            "value": "v",
+            "value": "1",
             "value2": "SELECT"
         },
         "3": {
-            "value": "enter",
+            "value": "3",
             "value2": "START"
         },
         "4": {
@@ -33,23 +33,88 @@
             "value2": "DPAD_RIGHT"
         },
         "8": {
-            "value": "z",
+            "value": "a",
             "value2": "BUTTON_1"
         },
         "9": {
-            "value": "a",
+            "value": "d",
             "value2": "BUTTON_3"
         },
         "10": {
-            "value": "q",
+            "value": "z",
             "value2": "LEFT_TOP_SHOULDER"
         },
         "11": {
-            "value": "e",
+            "value": "x",
             "value2": "RIGHT_TOP_SHOULDER"
+        },
+        "12": {
+            "value": "c",
+            "value2": "LEFT_BOTTOM_SHOULDER"
+        },
+        "13": {
+            "value": "v",
+            "value2": "RIGHT_BOTTOM_SHOULDER"
         }
     },
-    "1": {},
+    "1": {
+        "0": {
+            "value": "home",
+            "value2": "BUTTON_2"
+        },
+        "1": {
+            "value": "pageup",
+            "value2": "BUTTON_4"
+        },
+        "2": {
+            "value": "2",
+            "value2": "SELECT"
+        },
+        "3": {
+            "value": "enter",
+            "value2": "START"
+        },
+        "4": {
+            "value": "numpad 8",
+            "value2": "DPAD_UP"
+        },
+        "5": {
+            "value": "numpad 5",
+            "value2": "DPAD_DOWN"
+        },
+        "6": {
+            "value": "numpad 4",
+            "value2": "DPAD_LEFT"
+        },
+        "7": {
+            "value": "numpad 6",
+            "value2": "DPAD_RIGHT"
+        },
+        "8": {
+            "value": "insert",
+            "value2": "BUTTON_1"
+        },
+        "9": {
+            "value": "delete",
+            "value2": "BUTTON_3"
+        },
+        "10": {
+            "value": "end",
+            "value2": "LEFT_TOP_SHOULDER"
+        },
+        "11": {
+            "value": "pagedown",
+            "value2": "RIGHT_TOP_SHOULDER"
+        },
+        "12": {
+            "value": "numpad 0",
+            "value2": "LEFT_BOTTOM_SHOULDER"
+        },
+        "13": {
+            "value": "decimal point",
+            "value2": "RIGHT_BOTTOM_SHOULDER"
+        }
+    },
     "2": {},
     "3": {}
 }
