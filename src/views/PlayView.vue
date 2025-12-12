@@ -47,6 +47,23 @@ const iframeSrc = ref(null)
 let messageHandler = null
 let gameKeyHandler = null
 
+const loadKeymap = async (platform) => {
+  try {
+    const baseURL = import.meta.env.BASE_URL || '/arcade-games/'
+    const platformKey = platform.toLowerCase().replace(/\s+/g, '-')
+    const response = await fetch(`${baseURL}data/keymaps/${platformKey}.json`)
+    
+    if (response.ok) {
+      return await response.json()
+    }
+    console.warn(`Keymap not found for platform: ${platform}`)
+    return null
+  } catch (error) {
+    console.error('Error loading keymap:', error)
+    return null
+  }
+}
+
 const initializeEmulator = (game) => {
   // Build iframe URL with game configuration
   const params = new URLSearchParams({
@@ -174,6 +191,9 @@ const backToHome = () => {
 }
 
 onMounted(async () => {
+  // Scroll to top of page
+  window.scrollTo(0, 0)
+  
   await gameStore.loadGames()
 
   // Check if we have a game ID in the route params
@@ -183,8 +203,10 @@ onMounted(async () => {
     const game = gameStore.getGameById(gameId)
 
     if (game) {
+      // Load keymap for the game's platform
+      game.keymap = await loadKeymap(game.platform)
       gameStore.setCurrentGame(game)
-      initializeEmulator(game)
+      await initializeEmulator(game)
     } else {
       // Game not found, redirect to home
       router.push('/')
