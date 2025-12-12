@@ -99,15 +99,43 @@
     {
         "id": "megaman-x4",
         "name": "Mega Man X4",
-        "platform": "PlayStation",
+        "platform": "Capcom",
         "year": 1997,
         "core": "pcsx_rearmed",
         "popular": true,
-        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/playstation/megaman-x4.zip",
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/capcom/megaman-x4.zip",
         "genre": [
-            "Action"
+            "Shooter"
         ],
-        "screenshot": "/arcade-games/images/games/playstation/megaman-x4.jpg",
+        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/coar91.webp",
+        "color": "#0058A8"
+    },
+    {
+        "id": "megaman-x5",
+        "name": "Mega Man X5",
+        "platform": "Capcom",
+        "year": 2000,
+        "core": "pcsx_rearmed",
+        "popular": true,
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/capcom/megaman-x5.zip",
+        "genre": [
+            "Shooter"
+        ],
+        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/co558j.webp",
+        "color": "#0058A8"
+    },
+    {
+        "id": "megaman-x6",
+        "name": "Mega Man X6",
+        "platform": "Capcom",
+        "year": 2001,
+        "core": "pcsx_rearmed",
+        "popular": true,
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/capcom/megaman-x6.zip",
+        "genre": [
+            "Shooter"
+        ],
+        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/co558x.webp",
         "color": "#0058A8"
     },
     {
