@@ -46,15 +46,36 @@ const gameStore = useGameStore()
 const iframeSrc = ref(null)
 let messageHandler = null
 let gameKeyHandler = null
+let keymapsData = null
+
+const loadKeymaps = async () => {
+  if (keymapsData) return keymapsData
+  
+  try {
+    const baseURL = import.meta.env.BASE_URL || '/arcade-games/'
+    const response = await fetch(`${baseURL}data/keymaps.json`)
+    
+    if (response.ok) {
+      keymapsData = await response.json()
+      return keymapsData
+    }
+    console.warn('Keymaps file not found')
+    return null
+  } catch (error) {
+    console.error('Error loading keymaps:', error)
+    return null
+  }
+}
 
 const loadKeymap = async (platform) => {
   try {
-    const baseURL = import.meta.env.BASE_URL || '/arcade-games/'
-    const platformKey = platform.toLowerCase().replace(/\s+/g, '-')
-    const response = await fetch(`${baseURL}data/keymaps/${platformKey}.json`)
+    const keymaps = await loadKeymaps()
+    if (!keymaps) return null
     
-    if (response.ok) {
-      return await response.json()
+    const platformKey = platform.toLowerCase().replace(/\s+/g, '-')
+    
+    if (keymaps[platformKey]) {
+      return keymaps[platformKey]
     }
     console.warn(`Keymap not found for platform: ${platform}`)
     return null
