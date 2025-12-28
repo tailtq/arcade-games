@@ -167,20 +167,6 @@
         "color": "#A80000"
     },
     {
-        "id": "oriental-legends-2",
-        "name": "Oriental Legends 2",
-        "platform": "Arcade",
-        "year": 2006,
-        "core": "fbneo",
-        "popular": true,
-        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/arcade/orleg2.zip",
-        "genre": [
-            "Action"
-        ],
-        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/dy3l0kmh2jxfshypdidl.webp",
-        "color": "#A80000"
-    },
-    {
         "id": "cadillacs-and-dinosaurs",
         "name": "Cadillacs and Dinosaurs",
         "platform": "Capcom",
@@ -2397,5 +2383,19 @@
         ],
         "screenshot": "/arcade-games/images/games/neogeo/vliner.jpg",
         "color": "#74390A"
+    },
+    {
+        "id": "road-rash-1996",
+        "name": "Road Rash (1996)",
+        "platform": "Windows",
+        "year": 1996,
+        "core": "windows",
+        "popular": true,
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/windows/RoadRash.jsdos",
+        "genre": [
+            "Action"
+        ],
+        "screenshot": "/arcade-games/images/games/windows/road-rash-1996.webp",
+        "color": "#A80000"
     }
 ]

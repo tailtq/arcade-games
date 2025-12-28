@@ -86,22 +86,37 @@ const loadKeymap = async (platform) => {
 }
 
 const initializeEmulator = (game) => {
-  // Build iframe URL with game configuration
-  const params = new URLSearchParams({
-    romFile: game.romFile,
-    core: game.core,
-    gameName: game.name,
-    color: game.color || '#0064ff',
-    baseURL: window.baseURL || '',
-    emulatorJSPath: window.emulatorJSPath || 'data'
-  })
+  // Check if this is a Windows/DOS game (ISO file)
+  const isWindowsDOS = game.platform?.toLowerCase() === 'windows' || 
+                       game.romFile?.toLowerCase().endsWith('.iso')
   
-  // Add keymap data if available
-  if (game.keymap) {
-    params.append('keymap', JSON.stringify(game.keymap))
+  if (isWindowsDOS) {
+    // Use DOS emulator for Windows/ISO files
+    const params = new URLSearchParams({
+      isoFile: game.romFile,
+      gameName: game.name,
+      baseURL: window.baseURL || ''
+    })
+    
+    iframeSrc.value = `${window.baseURL}/dos-emulator.html?${params.toString()}`
+  } else {
+    // Use regular EmulatorJS for other platforms
+    const params = new URLSearchParams({
+      romFile: game.romFile,
+      core: game.core,
+      gameName: game.name,
+      color: game.color || '#0064ff',
+      baseURL: window.baseURL || '',
+      emulatorJSPath: window.emulatorJSPath || 'data'
+    })
+    
+    // Add keymap data if available
+    if (game.keymap) {
+      params.append('keymap', JSON.stringify(game.keymap))
+    }
+    
+    iframeSrc.value = `${window.baseURL}/emulator.html?${params.toString()}`
   }
-  
-  iframeSrc.value = `${window.baseURL}/emulator.html?${params.toString()}`
 }
 
 const setupMessageListener = () => {
@@ -116,6 +131,10 @@ const setupMessageListener = () => {
     switch (event.data.type) {
       case 'gameLoaded':
         showNotification(`${event.data.gameName} loaded successfully!`, 'success')
+        break
+      
+      case 'dosReady':
+        showNotification(`${event.data.gameName} - DOS emulator ready`, 'success')
         break
       
       case 'error':
