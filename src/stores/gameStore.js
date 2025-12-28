@@ -11,7 +11,11 @@ export const useGameStore = defineStore('game', {
   getters: {
     availablePlatforms: (state) => {
       const platforms = [...new Set(state.games.map(game => game.platform))]
-      return platforms.sort()
+      return platforms.sort((a, b) => {
+        if (a === 'Windows') return -1
+        if (b === 'Windows') return 1
+        return a.localeCompare(b)
+      })
     },
     
     filteredGames: (state) => {
