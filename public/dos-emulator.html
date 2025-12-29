@@ -15,11 +15,19 @@
   <div id="dos" style="width: 100vw; height: 100vh;"></div>
 
   <script>
-    Dos(document.getElementById("dos"), {
-      url: "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/windows/RoadRash.jsdos",
-      autoStart: true,
-      noCloud: true,
-    });
+    // Get romFile from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const romFile = urlParams.get('jsDosFile');
+    
+    if (!romFile) {
+      document.getElementById("dos").innerHTML = '<p style="color: white; text-align: center; padding: 20px;">Error: No ROM file specified. Please provide a romFile parameter.</p>';
+    } else {
+      Dos(document.getElementById("dos"), {
+        url: romFile,
+        autoStart: true,
+        noCloud: true,
+      });
+    }
   </script>
 </body>
 </html>
