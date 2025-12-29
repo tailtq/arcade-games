@@ -2397,5 +2397,19 @@
         ],
         "screenshot": "/arcade-games/images/games/windows/road-rash-1996.webp",
         "color": "#A80000"
+    },
+    {
+        "id": "red-alert",
+        "name": "Red Alert",
+        "platform": "Windows",
+        "year": 1996,
+        "core": "windows",
+        "popular": true,
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/windows/command-n-conquer-red-alert.jsdos",
+        "genre": [
+            "Action"
+        ],
+        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1nx0.webp",
+        "color": "#A80000"
     }
 ]

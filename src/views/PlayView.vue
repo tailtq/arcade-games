@@ -93,7 +93,7 @@ const initializeEmulator = (game) => {
   if (isWindowsDOS) {
     // Use DOS emulator for Windows/ISO files
     const params = new URLSearchParams({
-      isoFile: game.romFile,
+      jsDosFile: game.romFile,
       gameName: game.name,
       baseURL: window.baseURL || ''
     })
