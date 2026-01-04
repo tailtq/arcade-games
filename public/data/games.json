@@ -2411,5 +2411,19 @@
         ],
         "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/co1nx0.webp",
         "color": "#A80000"
+    },
+    {
+        "id": "dune-2000",
+        "name": "Dune 2000",
+        "platform": "Windows",
+        "year": 1998,
+        "core": "windows",
+        "popular": true,
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/windows/dune2000.jsdos",
+        "genre": [
+            "Action"
+        ],
+        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4bca.webp",
+        "color": "#A80000"
     }
 ]
