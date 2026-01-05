@@ -2425,5 +2425,19 @@
         ],
         "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4bca.webp",
         "color": "#A80000"
+    },
+    {
+        "id": "commandos-bel",
+        "name": "Commandos - Behind Enemy Lines",
+        "platform": "Windows",
+        "year": 1998,
+        "core": "windows",
+        "popular": true,
+        "romFile": "https://pub-304d0da766344768a8baa89052ba773e.r2.dev/roms/windows/commandos-behind-enemy-lines.jsdos",
+        "genre": [
+            "Action"
+        ],
+        "screenshot": "https://images.igdb.com/igdb/image/upload/t_cover_big/coar13.webp",
+        "color": "#A80000"
     }
 ]
